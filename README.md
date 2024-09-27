@@ -18,17 +18,6 @@ I will be able to make healthier decisions.
 
 #### My X and Ys: 
 
-X = housrSlept Y = totalSleepingHours
-X = diaryEntry Y = diaryEntries
-X = qualityofSleep Y = sleepRatings 
-
-An example of text with **bold** and *italic* fonts.  
-
-add a title and subtitle
-apply bold or italic fonts
-insert a bulleted list
-You must make use of at least two of these three elements in your proposal
-
-What will the application do?
-Who will use it?
-Why is this project of interest to you?
+- X = housrSlept Y = totalSleepingHours
+- X = diaryEntry Y = diaryEntries
+- X = qualityofSleep Y = sleepRatings 
