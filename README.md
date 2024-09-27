@@ -18,6 +18,14 @@ I will be able to make healthier decisions.
 
 #### My X and Ys: 
 
-- X = housrSlept Y = totalSleepingHours
+- X = hoursSlept Y = totalSleepingHours
 - X = diaryEntry Y = diaryEntries
 - X = qualityofSleep Y = sleepRatings 
+
+
+#### What I want to be able to do as a user:
+- As a user, I want to log the total number of hours I've slept for a certain day
+- As as user, I want to be able to rank my sleep quality
+- As a user, I want to be able to log my dreams as a diary entry
+- As a user, I want to go back on each date and view previous entries
+- As a user, I want to be able to see a summary of the total number of hours/ average hours I've slept
