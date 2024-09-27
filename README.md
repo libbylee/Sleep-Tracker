@@ -16,6 +16,12 @@ I will be able to make healthier decisions.
 - Ability to go back on each date and view previous entries
 - Ability to add up the total number of hours you've slept/ average hours 
 
+#### My X and Ys: 
+
+X = housrSlept Y = totalSleepingHours
+X = diaryEntry Y = diaryEntries
+X = qualityofSleep Y = sleepRatings 
+
 An example of text with **bold** and *italic* fonts.  
 
 add a title and subtitle
