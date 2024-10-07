@@ -1,0 +1,53 @@
+package model;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import java.util.ArrayList;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+public class SleepJournalTest {
+
+    private SleepJournal sleepJournalTest;
+    private SleepEntry entry1;
+    private SleepEntry entry2;
+    private SleepEntry entry3;
+
+    @BeforeEach
+    void runBefore() {
+        sleepJournalTest = new SleepJournal();
+        entry1 = new SleepEntry(2.0, 0, "My sleep was terrible.");
+        entry2 = new SleepEntry(8.0, 1, "My sleep was amazing.");
+        entry3 = new SleepEntry(6.5, 5, "It was okay.");
+    }
+
+    @Test
+    void testConstructor() {
+        assertEquals(0, sleepJournalTest.size());
+    }
+
+    @Test
+    void testAddingEntry() {
+        sleepJournalTest.addSleepEntryToSleepJournal(entry1);
+        assertEquals(1, sleepJournalTest.size());
+    }
+
+    @Test
+    void testAddingMultipleEntries() {
+        sleepJournalTest.addSleepEntryToSleepJournal(entry1);
+        sleepJournalTest.addSleepEntryToSleepJournal(entry2);
+        assertEquals(2, sleepJournalTest.size());
+    }
+
+    @Test
+    void testRemovingByIndex() {
+        sleepJournalTest.addSleepEntryToSleepJournal(entry1);
+        sleepJournalTest.addSleepEntryToSleepJournal(entry2);
+        sleepJournalTest.addSleepEntryToSleepJournal(entry3);
+        assertEquals(entry2, sleepJournalTest.getEntry(2));
+        sleepJournalTest.removeSleepEntryByIndex(2);
+        assertEquals(2, sleepJournalTest.size());
+        assertEquals(entry3, sleepJournalTest.getEntry(2));
+    }
+
+}
+
