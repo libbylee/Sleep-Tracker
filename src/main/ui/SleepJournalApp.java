@@ -6,7 +6,7 @@ import model.SleepJournal;
 import java.time.LocalDate;
 import java.util.Scanner;
 
-//SleepJournal App, referencing the Teller app
+//SleepJournal App, made by referencing the Teller app
 public class SleepJournalApp {
     private SleepJournal sleepJournal;
     private Scanner input; 
@@ -65,6 +65,7 @@ public class SleepJournalApp {
     private void displayMenu() {
         System.out.println("\nSelect from:");
         System.out.println("\t1 -> Write new entry");
+        // System.out.println("\t2 -> Delete entry");
         System.out.println("\t2 -> View average hours slept");
         System.out.println("\t3 -> View average rating");
         System.out.println("\t4 -> View all sleep entries");
@@ -114,6 +115,11 @@ public class SleepJournalApp {
                     + "\nSleep rating: " + entry.getSleepRating() + "\nNotes:" + entry.getSleepNote());
         }
 
+    }
+
+    //EFFECTS: deletes selected sleep entry 
+    // removeSleepEntryByIndex
+    private void deleteEntry(){
     }
 
 }
