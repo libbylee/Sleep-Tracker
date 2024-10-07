@@ -41,14 +41,19 @@ public class SleepJournalTest {
     }
 
     @Test
-    void testRemovingByIndex() {
+    void testAverageHoursSlept() {
         sleepJournalTest.addSleepEntryToSleepJournal(entry1);
         sleepJournalTest.addSleepEntryToSleepJournal(entry2);
         sleepJournalTest.addSleepEntryToSleepJournal(entry3);
-        assertEquals(entry2, sleepJournalTest.getEntry(2));
-        sleepJournalTest.removeSleepEntryByIndex(2);
-        assertEquals(2, sleepJournalTest.size());
-        assertEquals(entry3, sleepJournalTest.getEntry(2));
+        assertEquals("4.8", sleepJournalTest.averageHoursSlept());
+    }
+
+    @Test
+    void testAverageSleepRating() {
+        sleepJournalTest.addSleepEntryToSleepJournal(entry1);
+        sleepJournalTest.addSleepEntryToSleepJournal(entry2);
+        sleepJournalTest.addSleepEntryToSleepJournal(entry3);
+        assertEquals(2, sleepJournalTest.averageSleepRating());
     }
 
 }

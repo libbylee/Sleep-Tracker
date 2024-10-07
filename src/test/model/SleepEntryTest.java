@@ -9,16 +9,19 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class SleepEntryTest {
-
     private SleepEntry sleepEntryTest; 
     private LocalDate date; 
     private double hoursSlept; 
     private int sleepRating; 
     private String sleepNote;
-    
+
     @BeforeEach
     void runBefore() {
-        sleepEntryTest = new SleepEntry(LocalDate.of(2024,1,1), 0.0, 0, "test"); 
+        date = LocalDate.of(2024,1,1);
+        sleepRating = 0;
+        hoursSlept = 0.0;
+        sleepNote = "test";
+        sleepEntryTest = new SleepEntry(date, hoursSlept, sleepRating, sleepNote);
     }
 
     @Test
