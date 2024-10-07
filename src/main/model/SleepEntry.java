@@ -19,4 +19,28 @@ public class SleepEntry {
         this.sleepRating = sleepRating; 
         this.sleepNote = sleepNote;
     }
+    public LocalDate getDate() {
+        return date;
+    }
+
+
+    public double getHoursSlept() {
+        return hoursSlept;
+    }
+
+    public void setSleepRating(int sleepRating) { 
+        this.sleepRating = sleepRating;
+    }
+    
+    public double getSleepRating() {
+        return sleepRating;
+    }
+
+    public void setSleepNote(String sleepNote) {
+        this.sleepNote = sleepNote; 
+    }
+
+    public String getSleepNote() {
+        return sleepNote; 
+    }
 }
