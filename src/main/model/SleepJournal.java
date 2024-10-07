@@ -1,5 +1,6 @@
 package model;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 //shows a list of all sleep entries
@@ -45,5 +46,25 @@ public class SleepJournal {
         return new ArrayList<>(sleepJournal); 
     }
 
+    //EFFECTS: Takes sleep entries and returns the total sleep hours in one Journal
+    public String averageHoursSlept() {
+        double totalHoursSlept = 0.0;
+        for (SleepEntry sleepEntry : sleepJournal){
+            totalHoursSlept += sleepEntry.getHoursSlept();
+        }
+        double averageHoursSlept = totalHoursSlept / sleepJournal.size();
+        DecimalFormat df = new DecimalFormat("#.0");
+        return df.format(averageHoursSlept);
+    }
+
+    //EFFECTS: Takes sleep ratings and returns the total sleep ratings in one journal
+    public int averageSleepRating(){
+        int totalSleepRatings = 0;
+        for(SleepEntry sleepEntry : sleepJournal){
+            totalSleepRatings += sleepEntry.getSleepRating();
+        }
+        return totalSleepRatings / sleepJournal.size();
+    }
 }
+
 
