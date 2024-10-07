@@ -13,8 +13,8 @@ public class SleepEntry {
     //MODIFIES: this 
     //EFFECTS: sleepentry is given a date, numbers of hours slept, a rating, and a note
 
-    public SleepEntry(double hoursSlept, int sleepRating, String sleepNote) {
-        this.date = LocalDate.now();
+    public SleepEntry(LocalDate date, double hoursSlept, int sleepRating, String sleepNote) {
+        this.date = date; 
         this.hoursSlept = hoursSlept; 
         this.sleepRating = sleepRating; 
         this.sleepNote = sleepNote;
@@ -22,7 +22,6 @@ public class SleepEntry {
     public LocalDate getDate() {
         return date;
     }
-
 
     public double getHoursSlept() {
         return hoursSlept;
