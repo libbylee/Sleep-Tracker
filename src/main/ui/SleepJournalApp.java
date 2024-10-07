@@ -1,9 +1,11 @@
 package ui;
 
+import model.SleepEntry; 
 import model.SleepJournal;
+
 import java.util.Scanner;
 
-//SleepJournal App
+//SleepJournal App, referencing the Teller app
 public class SleepJournalApp {
     private SleepJournal sleepJournal;
     private Scanner input; 
@@ -13,10 +15,29 @@ public SleepJournalApp() {
 }
 
 // MODIFIES: this
-// EFFECTS: processes user command
+// EFFECTS: processes user command, runs the app
 private void runSleepJournal(){
-System.out.println("running");
-}
+    boolean running = true;
+    String command = null;
+
+    init();
+
+    while (running) {
+        displayMenu();
+        command = input.next().toLowerCase();
+
+        if (command.equals("q")){
+            running = false;
+        } else {
+            processCommand(command);
+        }
+    }
+    
+    System.out.println("See you next time!");
+
+    }
+
+// EFFECTS: processes commands for user 
 
 // EFFECTS: intializes menu with options for user 
 private void displayMenu(){
