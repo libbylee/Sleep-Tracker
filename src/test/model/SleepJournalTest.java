@@ -1,7 +1,9 @@
 package model;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import java.util.ArrayList;
+
+import java.time.LocalDate;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -15,9 +17,9 @@ public class SleepJournalTest {
     @BeforeEach
     void runBefore() {
         sleepJournalTest = new SleepJournal();
-        entry1 = new SleepEntry(2.0, 0, "My sleep was terrible.");
-        entry2 = new SleepEntry(8.0, 1, "My sleep was amazing.");
-        entry3 = new SleepEntry(6.5, 5, "It was okay.");
+        entry1 = new SleepEntry((LocalDate.of(2024, 1, 1)),0.0, 0, "My sleep was terrible.");
+        entry2 = new SleepEntry((LocalDate.of(2024, 2, 3)),8.0, 1, "My sleep was amazing.");
+        entry3 = new SleepEntry((LocalDate.of(2024, 3, 4)),6.5, 5, "It was okay.");
     }
 
     @Test
