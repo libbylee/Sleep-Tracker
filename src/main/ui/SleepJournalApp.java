@@ -43,10 +43,12 @@ public class SleepJournalApp {
         if (command.equals("1")) {
             writeEntry();
         } else if (command.equals("2")) {
-            viewAverageHours();
+            deleteEntry();
         } else if (command.equals("3")) {
-            viewAverageRating();
+            viewAverageHours();
         } else if (command.equals("4")) {
+            viewAverageRating();
+        } else if (command.equals("5")) {
             showAllEntries();
         } else {
             System.out.println("Invalid selection, try again");
@@ -65,10 +67,10 @@ public class SleepJournalApp {
     private void displayMenu() {
         System.out.println("\nSelect from:");
         System.out.println("\t1 -> Write new entry");
-        // System.out.println("\t2 -> Delete entry");
-        System.out.println("\t2 -> View average hours slept");
-        System.out.println("\t3 -> View average rating");
-        System.out.println("\t4 -> View all sleep entries");
+        System.out.println("\t2 -> Delete entry");
+        System.out.println("\t3 -> View average hours slept");
+        System.out.println("\t4 -> View average rating");
+        System.out.println("\t5 -> View all sleep entries");
         System.out.println("\tq -> Quit");
     }
 
@@ -114,12 +116,22 @@ public class SleepJournalApp {
                     + "\nHours slept:" + entry.getHoursSlept()
                     + "\nSleep rating: " + entry.getSleepRating() + "\nNotes:" + entry.getSleepNote());
         }
-
     }
 
     //EFFECTS: deletes selected sleep entry 
-    // removeSleepEntryByIndex
-    private void deleteEntry(){
+    private void deleteEntry(){ {
+        showAllEntries();
+        System.out.println("Enter the sleep entry you'd like to delete: ");
+        Integer index = input.nextInt();
+        System.out.println("Are you sure you want to delete this entry? \n Choose y for yes and n for no. ");
+        String answer = input.next().toLowerCase();
+        if (answer.equals("y")){
+            sleepJournal.removeSleepEntryByIndex(index);
+            System.out.println("Entry successfully deleted. ");
+            } else if (answer.equals("n")) {
+                System.out.println("Entry not deleted. ");
+            } else {
+                System.out.println("Invalid selection, try again");}
+            }
+        }
     }
-
-}
