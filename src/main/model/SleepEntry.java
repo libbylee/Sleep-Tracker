@@ -17,8 +17,9 @@ public class SleepEntry {
         this.date = date; 
         this.hoursSlept = hoursSlept; 
         this.sleepRating = sleepRating; 
-        this.sleepNote = sleepNote;
+        setSleepNote(sleepNote);
     }
+
     public LocalDate getDate() {
         return date;
     }
@@ -35,8 +36,11 @@ public class SleepEntry {
         return sleepRating;
     }
 
+    //REQUIRES: sleepNote has a non-zero length 
     public void setSleepNote(String sleepNote) {
-        this.sleepNote = sleepNote; 
+        if (sleepNote != null && (!sleepNote.isEmpty())) {
+            this.sleepNote = sleepNote; 
+        }
     }
 
     public String getSleepNote() {

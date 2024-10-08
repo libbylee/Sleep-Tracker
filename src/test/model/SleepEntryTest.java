@@ -34,9 +34,12 @@ public class SleepEntryTest {
 
     @Test
     void testSetSleepNote() {
+        assertEquals("test", sleepEntryTest.getSleepNote());
         sleepEntryTest.setSleepNote("This is a test.");
         assertEquals("This is a test.", sleepEntryTest.getSleepNote());
         sleepEntryTest.setSleepNote("This is a second test.");
+        assertEquals("This is a second test.", sleepEntryTest.getSleepNote());
+        sleepEntryTest.setSleepNote("");
         assertEquals("This is a second test.", sleepEntryTest.getSleepNote());
     }
 

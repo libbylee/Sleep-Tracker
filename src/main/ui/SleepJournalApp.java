@@ -63,7 +63,7 @@ public class SleepJournalApp {
     }
 
 
-// EFFECTS: intializes menu with options for user 
+    // EFFECTS: intializes menu with options for user 
     private void displayMenu() {
         System.out.println("\nSelect from:");
         System.out.println("\t1 -> Write new entry");
