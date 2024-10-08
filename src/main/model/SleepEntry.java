@@ -17,7 +17,7 @@ public class SleepEntry {
         this.date = date; 
         this.hoursSlept = hoursSlept; 
         this.sleepRating = sleepRating; 
-        setSleepNote(sleepNote);
+        this.sleepNote = sleepNote;
     }
 
     public LocalDate getDate() {
