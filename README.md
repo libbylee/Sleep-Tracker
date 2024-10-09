@@ -3,7 +3,9 @@
 ## Sleep Tracking Journal 
 
 *Why am I making this?*
-\n
+
+<br>
+
 As a student, it can be hard to get the correct hours of sleep and be able to say definitively how many hours of sleep you've gotten.
 That's why I decided to create a sleep tracker journal, where one can track the hours of sleep they have been getting to stay healthy. 
 In addition, I'd be able to log my dreams and rate the quality of sleep I've had. Did I wake up in the middle of the night? Did I sleep through my alarm? Any student will understand the struggle of not being able to sleep well. If I am more informed about my own sleep quality, I will also be able to make healthier decisions. 
