@@ -3,27 +3,31 @@
 ## Sleep Tracking Journal 
 
 *Why am I making this?*
+\n
 As a student, it can be hard to get the correct hours of sleep and be able to say definitively how many hours of sleep you've gotten.
 That's why I decided to create a sleep tracker journal, where one can track the hours of sleep they have been getting to stay healthy. 
-In addition, I'd be able to log my dreams and rate the quality of sleep I've had. Did I wake up in the middle of the night? Did I sleep
-through my alarm? Any student will understand the struggle of not being able to sleep well. If I am more informed about my own sleep quality,
-I will be able to make healthier decisions. 
+In addition, I'd be able to log my dreams and rate the quality of sleep I've had. Did I wake up in the middle of the night? Did I sleep through my alarm? Any student will understand the struggle of not being able to sleep well. If I am more informed about my own sleep quality, I will also be able to make healthier decisions. 
 
 *My journal will include:*
 - Ability to log the number of hours slept
 - Ability to rate your sleep quality
-- Ability to track your dreams 
-- Ability to go back on each date and view previous entries
-- Ability to add up the total number of hours you've slept/ average hours 
+- Ability to track your dreams by writing a note  
+- Ability to go back and view all entries
+- Ability to see the average sleep rating + number of hours you've slept
 
 #### My X and Y: 
 - X = sleepEntry Y = sleepJournal
 
-
 #### What I want to be able to do as a user:
-- As a user, I want to log the total number of hours I've slept for a date 
-- As as user, I want to be able to rate my sleep quality for that day
-- As a user, I want to be able to log my dreams as a diary entry
-- As a user, I want to go back on each date and view previous entries
 
-- As a user, I want to be able to see a summary of the total number of hours/ average hours I've slept
+##### Add multiple sleep entries to a sleep journal:
+*As a user, I want to be able to log multiple sleep entries to my sleep journal over time so that I can track my sleep patterns on different days.*
+
+##### List all sleep entries in the journal:
+*As a user, I want to be able to view a list of all sleep entries in my sleep journal that I have added so that I can easily review and compare my sleep history.*
+
+##### Log total hours slept and sleep quality for a specific date:
+*As a user, I want to log the number of hours I slept, rate the quality, as well as add notes of my sleep for a specific date so I can track how well I’m sleeping each night.*
+
+##### View average sleep hours and quality:
+*As a user, I want to be able to see the average hours I’ve slept and the average sleep quality of my entries, so I can analyze my overall sleep patterns and make adjustments if needed.*
