@@ -25,8 +25,6 @@ public class SleepJournal {
     public void removeSleepEntryByIndex(int index) {
         if (index >= 1 && index <= sleepJournal.size()) {
             sleepJournal.remove(index - 1);
-        } else { 
-            System.out.println("Invalid");
         }
     }
 
