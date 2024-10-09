@@ -53,6 +53,28 @@ public class SleepJournalTest {
     }
 
     @Test
+    void testremoveSleepEntryByIndexLowBoundary() {
+        sleepJournalTest.addSleepEntryToSleepJournal(entry1);
+        sleepJournalTest.addSleepEntryToSleepJournal(entry2);
+        sleepJournalTest.addSleepEntryToSleepJournal(entry3);
+        assertEquals(entry2, sleepJournalTest.getEntry(2));
+        sleepJournalTest.removeSleepEntryByIndex(0);
+        assertEquals(3, sleepJournalTest.size());
+        assertEquals(entry2, sleepJournalTest.getEntry(2));
+    }
+
+    @Test
+    void testremoveSleepEntryByIndexHighBoundary() {
+        sleepJournalTest.addSleepEntryToSleepJournal(entry1);
+        sleepJournalTest.addSleepEntryToSleepJournal(entry2);
+        sleepJournalTest.addSleepEntryToSleepJournal(entry3);
+        assertEquals(entry2, sleepJournalTest.getEntry(2));
+        sleepJournalTest.removeSleepEntryByIndex(4);
+        assertEquals(3, sleepJournalTest.size());
+        assertEquals(entry2, sleepJournalTest.getEntry(2));
+    }
+
+    @Test
     void testGetAllEntries() {
         sleepJournalTest.addSleepEntryToSleepJournal(entry1);
         sleepJournalTest.addSleepEntryToSleepJournal(entry2);
@@ -63,7 +85,7 @@ public class SleepJournalTest {
         expectedEntries.add(entry1);
         expectedEntries.add(entry2);
         expectedEntries.add(entry3);
-        
+
         assertEquals(expectedEntries, sleepJournalTest.getAllEntries());
     }
 
@@ -76,11 +98,21 @@ public class SleepJournalTest {
     }
 
     @Test
+    void testAverageHoursSleptWithEmptyJournal(){
+        assertEquals("0.0", sleepJournalTest.averageHoursSlept());
+    }
+
+    @Test
     void testAverageSleepRating() {
         sleepJournalTest.addSleepEntryToSleepJournal(entry1);
         sleepJournalTest.addSleepEntryToSleepJournal(entry2);
         sleepJournalTest.addSleepEntryToSleepJournal(entry3);
         assertEquals(2, sleepJournalTest.averageSleepRating());
+    }
+
+    @Test
+    void testAverageRatingWithEmptyJournal(){
+        assertEquals(0, sleepJournalTest.averageSleepRating());
     }
 
 }

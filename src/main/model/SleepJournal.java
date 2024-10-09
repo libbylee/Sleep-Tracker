@@ -46,6 +46,9 @@ public class SleepJournal {
 
     //EFFECTS: Takes sleep entries and returns the total sleep hours in one Journal
     public String averageHoursSlept() {
+        if (sleepJournal.isEmpty()){
+            return "0.0";
+        }
         double totalHoursSlept = 0.0;
         for (SleepEntry sleepEntry : sleepJournal){
             totalHoursSlept += sleepEntry.getHoursSlept();
@@ -57,6 +60,9 @@ public class SleepJournal {
 
     //EFFECTS: Takes sleep ratings and returns the total sleep ratings in one journal
     public int averageSleepRating(){
+        if (sleepJournal.isEmpty()){
+            return 0;
+        }
         int totalSleepRatings = 0;
         for(SleepEntry sleepEntry : sleepJournal){
             totalSleepRatings += sleepEntry.getSleepRating();
