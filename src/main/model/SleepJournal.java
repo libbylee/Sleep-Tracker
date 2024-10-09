@@ -46,11 +46,11 @@ public class SleepJournal {
 
     //EFFECTS: Takes sleep entries and returns the total sleep hours in one Journal
     public String averageHoursSlept() {
-        if (sleepJournal.isEmpty()){
+        if (sleepJournal.isEmpty()) {
             return "0.0";
         }
         double totalHoursSlept = 0.0;
-        for (SleepEntry sleepEntry : sleepJournal){
+        for (SleepEntry sleepEntry : sleepJournal) {
             totalHoursSlept += sleepEntry.getHoursSlept();
         }
         double averageHoursSlept = totalHoursSlept / sleepJournal.size();
@@ -59,12 +59,12 @@ public class SleepJournal {
     }
 
     //EFFECTS: Takes sleep ratings and returns the total sleep ratings in one journal
-    public int averageSleepRating(){
-        if (sleepJournal.isEmpty()){
+    public int averageSleepRating() {
+        if (sleepJournal.isEmpty()) {
             return 0;
         }
         int totalSleepRatings = 0;
-        for(SleepEntry sleepEntry : sleepJournal){
+        for (SleepEntry sleepEntry : sleepJournal) {
             totalSleepRatings += sleepEntry.getSleepRating();
         }
         return totalSleepRatings / sleepJournal.size();
