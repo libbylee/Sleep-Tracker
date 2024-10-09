@@ -39,9 +39,24 @@ public class SleepEntryTest {
         assertEquals("This is a test.", sleepEntryTest.getSleepNote());
         sleepEntryTest.setSleepNote("This is a second test.");
         assertEquals("This is a second test.", sleepEntryTest.getSleepNote());
-        sleepEntryTest.setSleepNote("");
-        assertEquals("This is a second test.", sleepEntryTest.getSleepNote());
     }
+
+    @Test
+    void testSetEmptySleepNote() {
+        sleepEntryTest.setSleepNote(sleepNote);
+        assertEquals("test", sleepEntryTest.getSleepNote());
+        sleepEntryTest.setSleepNote("");
+        assertEquals("test", sleepEntryTest.getSleepNote());
+    }
+
+    @Test
+    void testSetNullSleepNote() {
+        sleepEntryTest.setSleepNote(sleepNote);
+        assertEquals("test", sleepEntryTest.getSleepNote());
+        sleepEntryTest.setSleepNote(null);
+        assertEquals("test", sleepEntryTest.getSleepNote());
+    }
+
 
     @Test
     void testSetSleepRating() {
