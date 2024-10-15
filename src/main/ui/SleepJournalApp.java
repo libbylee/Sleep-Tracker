@@ -1,6 +1,6 @@
 package ui;
 
-import model.SleepEntry; 
+import model.SleepEntry;
 import model.SleepJournal;
 
 import java.time.LocalDate;
@@ -9,7 +9,7 @@ import java.util.Scanner;
 //SleepJournal App, made by referencing the Teller app
 public class SleepJournalApp {
     private SleepJournal sleepJournal;
-    private Scanner input; 
+    private Scanner input;
 
     public SleepJournalApp() {
         runSleepJournal();
@@ -33,12 +33,12 @@ public class SleepJournalApp {
                 processCommand(command);
             }
         }
-    
+
         System.out.println("See you next time!");
     }
 
     // MODIFIES: this
-    // EFFECTS: processes user command 
+    // EFFECTS: processes user command
     private void processCommand(String command) {
         if (command.equals("1")) {
             writeEntry();
@@ -58,12 +58,11 @@ public class SleepJournalApp {
     // MODIFIES: this
     // EFFECTS: Initializes the SleepJournal and Scanner
     private void init() {
-        sleepJournal = new SleepJournal(); 
+        sleepJournal = new SleepJournal();
         input = new Scanner(System.in);
     }
 
-
-    // EFFECTS: intializes menu with options for user 
+    // EFFECTS: intializes menu with options for user
     private void displayMenu() {
         System.out.println("\nSelect from:");
         System.out.println("\t1 -> Write new entry");
@@ -74,8 +73,8 @@ public class SleepJournalApp {
         System.out.println("\tq -> Quit");
     }
 
-    //MODIFIES: this 
-    //EFFECTS: gets user to enter sleep entry details, and adds it to the journal 
+    // MODIFIES: this
+    // EFFECTS: gets user to enter sleep entry details, and adds it to the journal
     private void writeEntry() {
         System.out.println("Enter date in the form of (YYYY-MM-DD): ");
         LocalDate date = LocalDate.parse(input.next());
@@ -108,30 +107,32 @@ public class SleepJournalApp {
         System.out.println("Average rating: " + sleepJournal.averageSleepRating());
     }
 
-    //EFFECTS: prints total sleep entries to screen
+    // EFFECTS: prints total sleep entries to screen
     private void showAllEntries() {
         System.out.println("All entries:");
         for (SleepEntry entry : sleepJournal.getAllEntries()) {
-            System.out.println("\nDate:" + entry.getDate() 
+            System.out.println("\nDate:" + entry.getDate()
                     + "\nHours slept:" + entry.getHoursSlept()
                     + "\nSleep rating: " + entry.getSleepRating() + "\nNotes:" + entry.getSleepNote());
         }
     }
 
-    //EFFECTS: deletes selected sleep entry 
-    private void deleteEntry(){ {
-        showAllEntries();
-        System.out.println("Enter the sleep entry you'd like to delete: ");
-        Integer index = input.nextInt();
-        System.out.println("Are you sure you want to delete this entry? \n Choose y for yes and n for no. ");
-        String answer = input.next().toLowerCase();
-        if (answer.equals("y")){
-            sleepJournal.removeSleepEntryByIndex(index);
-            System.out.println("Entry successfully deleted. ");
+    // EFFECTS: deletes selected sleep entry
+    private void deleteEntry() {
+        {
+            showAllEntries();
+            System.out.println("Enter the sleep entry you'd like to delete: ");
+            Integer index = input.nextInt();
+            System.out.println("Are you sure you want to delete this entry? \n Choose y for yes and n for no. ");
+            String answer = input.next().toLowerCase();
+            if (answer.equals("y")) {
+                sleepJournal.removeSleepEntryByIndex(index);
+                System.out.println("Entry successfully deleted. ");
             } else if (answer.equals("n")) {
                 System.out.println("Entry not deleted. ");
             } else {
-                System.out.println("Invalid selection, try again");}
+                System.out.println("Invalid selection, try again");
             }
         }
     }
+}
