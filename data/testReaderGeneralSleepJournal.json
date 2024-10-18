@@ -1,0 +1,22 @@
+{
+    "sleepEntries": [
+        {
+            "date": "2024-10-09",
+            "hoursSlept": 2,
+            "sleepRating": 5,
+            "sleepNote": "This was a terrible sleep"
+        },
+        {
+            "date": "2024-10-10",
+            "hoursSlept": 10,
+            "sleepRating": 10,
+            "sleepNote": "10/10 sleep for a 10/10 day"
+        },
+        {
+            "date": "2024-10-11",
+            "hoursSlept": 7.5,
+            "sleepRating": 6,
+            "sleepNote": "Not bad"
+        }
+    ]
+}
