@@ -9,15 +9,15 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class SleepEntryTest {
-    private SleepEntry sleepEntryTest; 
-    private LocalDate date; 
-    private double hoursSlept; 
-    private int sleepRating; 
+    private SleepEntry sleepEntryTest;
+    private LocalDate date;
+    private double hoursSlept;
+    private int sleepRating;
     private String sleepNote;
 
     @BeforeEach
     void runBefore() {
-        date = LocalDate.of(2024,1,1);
+        date = LocalDate.of(2024, 1, 1);
         sleepRating = 0;
         hoursSlept = 0.0;
         sleepNote = "test";
@@ -56,7 +56,6 @@ public class SleepEntryTest {
         sleepEntryTest.setSleepNote(null);
         assertEquals("test", sleepEntryTest.getSleepNote());
     }
-
 
     @Test
     void testSetSleepRating() {
