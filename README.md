@@ -33,3 +33,9 @@ In addition, I'd be able to log my dreams and rate the quality of sleep I've had
 
 ##### View average sleep hours and quality:
 *As a user, I want to be able to see the average hours I’ve slept and the average sleep quality of my entries, so I can analyze my overall sleep patterns and make adjustments if needed.*
+
+##### Save SleepJournal to a file:
+*As a user, when I select the quit option from the application menu, I want to be reminded to save my to-do list to a file and have the option to do so or not.*
+
+##### Load SleepJournal from a file:
+*As a user, when I start the application, I want to be given the option to load my sleepJournal from a file.*
