@@ -52,6 +52,7 @@ public class JsonWriterTest extends JsonTest {
             sj.addSleepEntryToSleepJournal(entry1);
             sj.addSleepEntryToSleepJournal(entry2);
             sj.addSleepEntryToSleepJournal(entry3);
+
             JsonWriter writer = new JsonWriter("./data/testWriterGeneralSleepJouranl.json");
             writer.open();
             writer.write(sj);
