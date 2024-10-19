@@ -1,10 +1,13 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import persistence.Writable;
 
 //shows a list of all sleep entries
-public class SleepJournal {
+public class SleepJournal implements Writable {
     private ArrayList<SleepEntry> sleepJournal;
 
     // EFFECTS: makes an empty list, initializes the list
@@ -69,5 +72,23 @@ public class SleepJournal {
             totalSleepRatings += sleepEntry.getSleepRating();
         }
         return totalSleepRatings / sleepJournal.size();
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("sleepJournal", sleepJournalToJson());
+        return json;
+    }
+
+    // EFFECTS: returns things in the sleepjournal as a JSON array
+    private JSONArray sleepJournalToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (SleepEntry entry : sleepJournal) {
+            jsonArray.put(entry.toJson());
+        }
+
+        return jsonArray;
     }
 }

@@ -61,14 +61,15 @@ public class JsonReader {
     }
 
     // MODIFIES: sleepjournal
-    // EFFECTS: parses a single sleepentry from JSON object and adds it to sleepjournal
+    // EFFECTS: parses a single sleepentry from JSON object and adds it to
+    // sleepjournal
     private void addSleepEntry(SleepJournal sj, JSONObject jsonObject) {
         LocalDate date = LocalDate.parse(jsonObject.getString("date"));
         double hoursSlept = jsonObject.getDouble("hoursSlept");
-        int sleepRating = jsonObject.getInt("sleepRating"); 
+        int sleepRating = jsonObject.getInt("sleepRating");
         String sleepNote = jsonObject.getString("sleepNote");
 
-        SleepEntry entry = new SleepEntry(date, hoursSlept, sleepRating, sleepNote); 
-        sj.addSleepEntryToSleepJournal(entry); 
+        SleepEntry entry = new SleepEntry(date, hoursSlept, sleepRating, sleepNote);
+        sj.addSleepEntryToSleepJournal(entry);
     }
 }

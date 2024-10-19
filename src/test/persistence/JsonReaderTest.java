@@ -4,7 +4,6 @@ import org.junit.jupiter.api.Test;
 
 import model.SleepEntry;
 import model.SleepJournal;
-import persistence.JsonReader;
 import java.io.IOException;
 import java.util.List;
 import java.time.LocalDate;
@@ -17,7 +16,7 @@ public class JsonReaderTest extends JsonTest {
     void testReaderNonExistentFile() {
         JsonReader reader = new JsonReader("./data/noSuchFile.json");
         try {
-            SleepJournal sj = reader.read();
+            reader.read();
             fail("IOException expected");
         } catch (IOException e) {
             // pass

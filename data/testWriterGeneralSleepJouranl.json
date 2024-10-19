@@ -1,0 +1,20 @@
+{"sleepJournal": [
+    {
+        "date": "2024-10-09",
+        "hoursSlept": 2,
+        "sleepNote": "This was a terrible sleep",
+        "sleepRating": 5
+    },
+    {
+        "date": "2024-10-10",
+        "hoursSlept": 10,
+        "sleepNote": "10/10 sleep for a 10/10 day",
+        "sleepRating": 10
+    },
+    {
+        "date": "2024-10-11",
+        "hoursSlept": 7.5,
+        "sleepNote": "Not bad",
+        "sleepRating": 6
+    }
+]}

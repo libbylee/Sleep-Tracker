@@ -1,8 +1,6 @@
 package model;
 
 import java.time.LocalDate;
-
-import org.apiguardian.api.API;
 import org.json.JSONObject;
 
 import persistence.Writable;
@@ -35,7 +33,6 @@ public class SleepEntry implements Writable {
         json.put("sleepNote", sleepNote);
         return json;
     }
-
 
     public LocalDate getDate() {
         return date;

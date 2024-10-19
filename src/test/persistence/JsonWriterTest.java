@@ -12,18 +12,11 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class JsonWriterTest extends JsonTest {
-    // the strategy in designing tests for the JsonWriter is to
-    // write data to a file and then use the reader to read it back in and check
-    // that we
-    // read in a copy of what was written out.
-    private SleepEntry entry1;
-    private SleepEntry entry2;
-    private SleepEntry entry3;
-
     @Test
     void testWriterInvalidFile() {
 
         try {
+            SleepJournal sj = new SleepJournal();
             JsonWriter writer = new JsonWriter(".data/noSuchFile.json");
             writer.open();
             fail("IOException was expected");
@@ -36,7 +29,7 @@ public class JsonWriterTest extends JsonTest {
     void testWriterEmptySleepJournal() {
         try {
             SleepJournal sj = new SleepJournal();
-            JsonWriter writer = new JsonWriter(".data/testWriterEmptySleepJournal.json");
+            JsonWriter writer = new JsonWriter("./data/testWriterEmptySleepJournal.json");
             writer.open();
             writer.write(sj);
             writer.close();
