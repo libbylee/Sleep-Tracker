@@ -39,3 +39,7 @@ In addition, I'd be able to log my dreams and rate the quality of sleep I've had
 
 ##### Load SleepJournal from a file:
 *As a user, when I start the application, I want to be given the option to load my sleepJournal from a file.*
+
+#### Source code used: 
+University of British Columbia. (n.d.). TellerApp. GitHub. https://github.students.cs.ubc.ca/CPSC210/TellerApp
+University of British Columbia. (n.d.). JsonSerializationDemo. GitHub. https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
