@@ -2,8 +2,13 @@ package model;
 
 import java.time.LocalDate;
 
+import org.apiguardian.api.API;
+import org.json.JSONObject;
+
+import persistence.Writable;
+
 //Represents a single sleep journal entry having a date, the hours slept, quality, and notes about the sleep 
-public class SleepEntry {
+public class SleepEntry implements Writable {
     private LocalDate date; // the date of the sleep entry
     private double hoursSlept; // the number of hours slept
     private int sleepRating; // the quality of sleep rated on a scale from 1-10
@@ -20,6 +25,17 @@ public class SleepEntry {
         this.sleepRating = sleepRating;
         this.sleepNote = sleepNote;
     }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("date", date.toString());
+        json.put("hoursSlept", hoursSlept);
+        json.put("sleepRating", sleepRating);
+        json.put("sleepNote", sleepNote);
+        return json;
+    }
+
 
     public LocalDate getDate() {
         return date;
