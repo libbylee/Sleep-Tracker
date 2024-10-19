@@ -3,15 +3,25 @@ package ui;
 import model.SleepEntry;
 import model.SleepJournal;
 
+import persistence.JsonReader;
+import persistence.JsonWriter;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.Scanner;
 
-//SleepJournal App, made by referencing the Teller app
+//Represents SleepJournal App, made by referencing the Teller app
 public class SleepJournalApp {
+    private static final String JSON_STORE = "./data/sleepjournal.json";
     private SleepJournal sleepJournal;
     private Scanner input;
+    private JsonWriter jsonWriter;
+    private JsonReader jsonReader;
 
-    public SleepJournalApp() {
+    public SleepJournalApp() throws FileNotFoundException {
+        input = new Scanner(System.in);
+        jsonWriter = new JsonWriter(JSON_STORE);
+        jsonReader = new JsonReader(JSON_STORE);
         runSleepJournal();
     }
 
@@ -20,7 +30,6 @@ public class SleepJournalApp {
     private void runSleepJournal() {
         boolean running = true;
         String command = null;
-
         init();
 
         while (running) {
@@ -38,6 +47,12 @@ public class SleepJournalApp {
     }
 
     // MODIFIES: this
+    // EFFECTS: Initializes the SleepJournal and Scanner
+    private void init() {
+        sleepJournal = new SleepJournal();
+    }
+
+    // MODIFIES: this
     // EFFECTS: processes user command
     private void processCommand(String command) {
         if (command.equals("1")) {
@@ -50,16 +65,13 @@ public class SleepJournalApp {
             viewAverageRating();
         } else if (command.equals("5")) {
             showAllEntries();
+        } else if (command.equals("6")) {
+            saveSleepJournal();
+        } else if (command.equals("7")) {
+            loadSleepJournal();
         } else {
             System.out.println("Invalid selection, try again");
         }
-    }
-
-    // MODIFIES: this
-    // EFFECTS: Initializes the SleepJournal and Scanner
-    private void init() {
-        sleepJournal = new SleepJournal();
-        input = new Scanner(System.in);
     }
 
     // EFFECTS: intializes menu with options for user
@@ -70,6 +82,8 @@ public class SleepJournalApp {
         System.out.println("\t3 -> View average hours slept");
         System.out.println("\t4 -> View average rating");
         System.out.println("\t5 -> View all sleep entries");
+        System.out.println("\t6 -> Save sleep journal to file");
+        System.out.println("\t7 -> Load sleep journal from file");
         System.out.println("\tq -> Quit");
     }
 
@@ -133,6 +147,29 @@ public class SleepJournalApp {
             } else {
                 System.out.println("Invalid selection, try again");
             }
+        }
+    }
+
+    // EFFECTS: saves the sleepjournal to a file
+    private void saveSleepJournal() {
+        try {
+            jsonWriter.open();
+            jsonWriter.write(sleepJournal);
+            jsonWriter.close();
+            System.out.println("Saved to" + JSON_STORE);
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to file:" + JSON_STORE);
+        }
+    }
+
+    // MODIFIES: this
+    // EFFECTS: loads sleepjournal from file
+    private void loadSleepJournal() {
+        try {
+            sleepJournal = jsonReader.read();
+            System.out.println("Loaded from" + JSON_STORE);
+        } catch (IOException e) {
+            System.out.println("Unable to read from file" + JSON_STORE);
         }
     }
 }

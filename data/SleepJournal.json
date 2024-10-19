@@ -1,5 +1,14 @@
-{
-    "sleepJournal": [
-        
-    ]
-}
+{"sleepJournal": [
+    {
+        "date": "2020-08-09",
+        "hoursSlept": 2,
+        "sleepNote": "this is a test",
+        "sleepRating": 4
+    },
+    {
+        "date": "2020-09-08",
+        "hoursSlept": 4,
+        "sleepNote": "this is another test",
+        "sleepRating": 5
+    }
+]}
