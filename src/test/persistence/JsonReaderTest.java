@@ -17,11 +17,13 @@ public class JsonReaderTest extends JsonTest {
         JsonReader reader = new JsonReader("./data/madeUpFile.json");
         try {
             reader.read();
-            fail("IOException expected");
+            fail("Expected IOException was not thrown");
         } catch (IOException e) {
-            // pass
+            assertEquals(".\\data\\madeUpFile.json", e.getMessage());
+            System.out.println("Caught IOException, made up file");
         }
     }
+
 
     @Test
     void testReadEmptySleepJournal() {

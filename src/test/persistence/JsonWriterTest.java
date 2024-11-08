@@ -19,8 +19,9 @@ public class JsonWriterTest extends JsonTest {
             SleepJournal sj = new SleepJournal();
             JsonWriter writer = new JsonWriter(".data/noSuchFile.json");
             writer.open();
-            fail("IOException was expected");
+            fail("IOException was expected, but not thrown");
         } catch (IOException e) {
+            System.out.println("IO Exception caught");
             // pass
         }
     }
