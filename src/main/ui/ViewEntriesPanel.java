@@ -38,8 +38,8 @@ public class ViewEntriesPanel extends JPanel {
 
         String[] sortOptions = {"Sort by Highest Rating", "Sort by Most Hours Slept"};
         sortComboBox = new JComboBox<>(sortOptions);
-        sortComboBox.addActionListener(e -> sortEntries()); // Sort entries when an option is selected
-        JPanel sortPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));  // Optional: Change layout
+        sortComboBox.addActionListener(e -> sortEntries());
+        JPanel sortPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
         sortPanel.add(sortComboBox);
         add(sortPanel, BorderLayout.NORTH);
 
@@ -72,8 +72,7 @@ public class ViewEntriesPanel extends JPanel {
     }
 
     // MODIFIES: this
-    // EFFECTS: Loads the entries from the file using JsonReader and updates the
-    // text area
+    // EFFECTS: Loads the entries from the file using JsonReader and updates the text area
     private void loadEntriesFromFile() {
         try {
             journal = jsonReader.read();
@@ -106,17 +105,18 @@ public class ViewEntriesPanel extends JPanel {
 
     // MODIFIES: this
     // EFFECTS: Sorts the entries based on the selected option (either by rating or hours slept)
-    private void sortEntries() {
+    private void sortEntries(){
         List<SleepEntry> entries = journal.getAllEntries();
 
         String selectedOption = (String) sortComboBox.getSelectedItem();
 
-        // Sort entries based on the selected option
         if ("Sort by Highest Rating".equals(selectedOption)) {
             entries.sort((entry1, entry2) -> Double.compare(entry2.getSleepRating(), entry1.getSleepRating()));
         } else if ("Sort by Most Hours Slept".equals(selectedOption)) {
             entries.sort((entry1, entry2) -> Double.compare(entry2.getHoursSlept(), entry1.getHoursSlept()));
         }
+
+        journal.setEntries(entries);
 
         displayEntries(); 
     }
@@ -126,6 +126,8 @@ public class ViewEntriesPanel extends JPanel {
         mainWindow.switchToMainMenu();
     }
 
+    // MODIFIES: this
+    // EFFECTS: refreshes the display 
     public void refreshDisplay() {
         loadEntriesFromFile();
     }
