@@ -25,6 +25,8 @@ public class MainWindow {
     JsonReader reader;
     ViewEntriesPanel viewEntriesPanel;
     AddEntryPanel addEntryPanel;
+    MainMenuPanel mainMenu;
+    JFrame window;
 
     public MainWindow() {
         journal = new SleepJournal();
@@ -44,7 +46,7 @@ public class MainWindow {
     private void initializeMenu() {
         JTabbedPane tabbedPane = new JTabbedPane();
 
-        JPanel mainMenu = new MainMenu();
+        mainMenu = new MainMenuPanel(frame, journal, writer, reader);
         viewEntriesPanel = new ViewEntriesPanel(journal, reader);
         addEntryPanel = new AddEntryPanel(journal, writer, viewEntriesPanel);
 
