@@ -19,7 +19,6 @@ public class AddEntryPanel extends JPanel {
     private SleepJournal sleepJournal;
     private JsonWriter writer;
     private ViewEntriesPanel viewEntriesPanel;
-    // private JFrame window;
     private MainWindow mainWindow;
 
     // MODIFIES: this
@@ -150,6 +149,7 @@ public class AddEntryPanel extends JPanel {
     // MODIFIES: this
     // EFFECTS: saves the sleep journal to the file using JsonWriter
     public void saveSleepJournalToFile() {
+        
         try {
             writer.open();
             writer.write(sleepJournal);

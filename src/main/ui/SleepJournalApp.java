@@ -12,7 +12,7 @@ import java.util.Scanner;
 
 //Represents SleepJournal App, made by referencing the Teller app
 public class SleepJournalApp {
-    private static final String JSON_STORE = "./data/sleepjournal.json";
+    private static final String JSON_STORE = "./data/SleepJournal.json";
     private SleepJournal sleepJournal;
     private Scanner input;
     private JsonWriter jsonWriter;
