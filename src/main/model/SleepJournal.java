@@ -4,9 +4,10 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.List;
+
 import persistence.Writable;
 
-//shows a list of all sleep entries
 public class SleepJournal implements Writable {
     private ArrayList<SleepEntry> sleepJournal;
 
@@ -22,6 +23,13 @@ public class SleepJournal implements Writable {
         sleepJournal.add(entry);
     }
 
+    // REQUIRES: SleepEntry != null
+    // MODIFIES: this
+    // EFFECTS: setsleepJournal list to a new one 
+    public void setEntries(List<SleepEntry> entries) {
+        this.sleepJournal = new ArrayList<>(entries); // Replaces the current list with the sorted one
+    }
+
     // REQUIRES: index number is a valid index in the SleepEntry list
     // MODIFIES: this
     // EFFECTS: removes a sleep entry in the journal by index (not 0 based)
@@ -30,6 +38,7 @@ public class SleepJournal implements Writable {
             sleepJournal.remove(index - 1);
         }
     }
+
 
     // REQUIRES: index number is a valid index in the SleepEntry list
     // EFFECTS: returns the sleep entry at the specified position
