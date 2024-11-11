@@ -1,14 +1,14 @@
 {"sleepJournal": [
     {
-        "date": "2020-08-09",
-        "hoursSlept": 2,
-        "sleepNote": "this is a test",
-        "sleepRating": 4
+        "date": "2024-08-09",
+        "hoursSlept": 9,
+        "sleepNote": "not bad",
+        "sleepRating": 8
     },
     {
-        "date": "2020-09-08",
-        "hoursSlept": 4,
-        "sleepNote": "this is another test",
-        "sleepRating": 5
+        "date": "2024-09-09",
+        "hoursSlept": 8,
+        "sleepNote": "so bad",
+        "sleepRating": 2
     }
 ]}
