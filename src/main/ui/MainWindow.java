@@ -10,6 +10,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.IOException;
 import java.awt.BorderLayout;
+import java.awt.Font;
 
 public class MainWindow {
     JFrame frame;
@@ -103,8 +104,17 @@ public class MainWindow {
 
     // EFFECTS: shows prompting to ask to save data
     private void promptSaveData(JDialog dialog) {
-        int result = JOptionPane.showConfirmDialog(dialog, "Are you sure you want to exit?", "Leave?",
-                JOptionPane.YES_NO_OPTION);
+        ImageIcon wonder = new ImageIcon("thinkinganimated.gif");
+
+        JPanel messagePanel = new JPanel(new BorderLayout());
+        JLabel messageLabel = new JLabel("Are you sure you want to exit?", JLabel.CENTER);
+        messageLabel.setFont(new Font("Arial", Font.BOLD, 20));
+        JLabel imageLabel = new JLabel(wonder);
+        messagePanel.add(messageLabel, BorderLayout.CENTER);
+        messagePanel.add(imageLabel, BorderLayout.WEST);
+
+        int result = JOptionPane.showConfirmDialog(dialog, messagePanel, "Exit?",
+                JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE);
         if (result == JOptionPane.YES_OPTION) {
             addEntryPanel.saveSleepJournalToFile();
             frame.dispose();

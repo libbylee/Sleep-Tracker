@@ -43,7 +43,7 @@ public class ViewEntriesPanel extends JPanel {
         sortPanel.add(sortComboBox);
         add(sortPanel, BorderLayout.NORTH);
 
-        entriesArea = new JTextArea(15, 50);
+        entriesArea = new JTextArea(15, 40);
         entriesArea.setEditable(false);
         entriesArea.setFont(new Font("Arial", Font.PLAIN, 18));
 

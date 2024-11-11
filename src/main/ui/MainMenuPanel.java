@@ -7,7 +7,6 @@ import persistence.JsonWriter;
 import java.awt.*;
 
 public class MainMenuPanel extends JPanel {
-    //private JFrame window;
     private MainWindow mainWindow;
     private SleepJournal journal;
     private JsonWriter writer;
@@ -58,7 +57,7 @@ public class MainMenuPanel extends JPanel {
     private JPanel setTitlePanel() {
         JPanel titlePanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
 
-        JLabel titleLabel = new JLabel("Welcome to the Sleep Journal App", JLabel.CENTER);
+        JLabel titleLabel = new JLabel("Welcome to your sleep journal!", JLabel.CENTER);
         titleLabel.setFont(new Font("Times New Roman", Font.BOLD, 32));
 
         ImageIcon titleIcon = getResizedBook();
@@ -69,6 +68,8 @@ public class MainMenuPanel extends JPanel {
         return titlePanel;
     }
 
+    // MODIFIES: buttonPanel
+    // EFFECTS: adds buttons to panel 
     private void addButtonsToPanel(JPanel buttonPanel, JButton viewAllEntriesButton, JButton addEntryButton,
             JButton viewAvgEntriesButton, JButton viewAvgRatingButton, JButton quitButton) {
         buttonPanel.add(viewAllEntriesButton);
@@ -87,48 +88,4 @@ public class MainMenuPanel extends JPanel {
         saveJournalIcon = new ImageIcon(resizedJournalIcon);
         return saveJournalIcon;
     }
-
-    // // EFFECTS: Switches to View Entries Panel
-    // private void showViewEntriesPanel() {
-    //     if (viewEntriesPanel == null) {
-    //         viewEntriesPanel = new ViewEntriesPanel(window, journal, reader);
-    //     }
-    //     window.getContentPane().removeAll();
-    //     window.getContentPane().add(viewEntriesPanel, BorderLayout.CENTER);
-    //     window.revalidate();
-    //     window.repaint();
-    // }
-
-    // // EFFECTS: Switches to Add Entry Panel
-    // private void showAddEntryPanel() {
-    //     if (window == null) {
-    //         System.out.println("Error: JFrame window is null.");
-    //         return;
-    //     }
-    //     AddEntryPanel addEntryPanel = new AddEntryPanel(window, journal, writer, viewEntriesPanel);
-    //     window.getContentPane().removeAll();
-    //     window.getContentPane().add(addEntryPanel, BorderLayout.CENTER);
-    //     window.revalidate();
-    //     window.repaint();
-    // }
 }
-
-// Uncomment and implement these methods when necessary
-// // EFFECTS: Switches to Average Entries Panel (Average Hours Slept)
-// private void showAverageEntriesPanel() {
-// AverageEntriesPanel averageEntriesPanel = new
-// AverageEntriesPanel(sleepJournal);
-// window.getContentPane().removeAll();
-// window.getContentPane().add(averageEntriesPanel, BorderLayout.CENTER);
-// window.revalidate();
-// window.repaint();
-// }
-
-// // EFFECTS: Switches to Average Score Panel (Average Sleep Rating)
-// private void showAverageScorePanel() {
-// AverageScorePanel averageScorePanel = new AverageScorePanel(sleepJournal);
-// window.getContentPane().removeAll();
-// window.getContentPane().add(averageScorePanel, BorderLayout.CENTER);
-// window.revalidate();
-// window.repaint();
-// }
