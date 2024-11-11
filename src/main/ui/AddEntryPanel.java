@@ -20,12 +20,15 @@ public class AddEntryPanel extends JPanel {
     private SleepJournal sleepJournal;
     private JsonWriter writer;
     private ViewEntriesPanel viewEntriesPanel;
-    private JFrame window;
+    // private JFrame window;
+    private MainWindow mainWindow;
 
     // MODIFIES: this
     // EFFECTS: Creates an add entry panel with buttons for sleepJournal functions
-    public AddEntryPanel(JFrame window, SleepJournal journal, JsonWriter writer, ViewEntriesPanel viewEntriesPanel) {
-        this.window = window;
+    public AddEntryPanel(MainWindow mainWindow, SleepJournal journal, JsonWriter writer,
+            ViewEntriesPanel viewEntriesPanel) {
+        //this.window = window;
+        this.mainWindow = mainWindow;
         this.sleepJournal = journal;
         this.writer = writer;
         this.viewEntriesPanel = viewEntriesPanel;
@@ -64,14 +67,9 @@ public class AddEntryPanel extends JPanel {
         this.viewEntriesPanel = panel;
     }
 
-    // EFFECTS: Returns user back to the main menu
+    // EFFECTS: goes back to main menu
     private void goBackToMainMenu() {
-        MainMenuPanel mainMenuPanel = new MainMenuPanel(window, sleepJournal, writer,
-                new JsonReader("data/sleepJournal.json"));
-        window.getContentPane().removeAll();
-        window.getContentPane().add(mainMenuPanel, BorderLayout.CENTER);
-        window.revalidate();
-        window.repaint();
+        mainWindow.switchToMainMenu();
     }
 
     // MODIFIES: this

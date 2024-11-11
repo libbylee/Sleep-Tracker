@@ -20,16 +20,21 @@ public class MainWindow {
     AddEntryPanel addEntryPanel;
     MainMenuPanel mainMenu;
     JFrame window;
+    JTabbedPane tabbedPane;
+    private MainWindow mainWindow;
 
     public MainWindow() {
         journal = new SleepJournal();
-        writer = new JsonWriter("sleepJournal.json");
-        reader = new JsonReader("sleepJournal.json");
+        writer = new JsonWriter("data/sleepJournal.json");
+        reader = new JsonReader("data/sleepJournal.json");
 
         frame = new JFrame("Sleep Tracking Journal");
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setSize(800, 500);
         frame.setLocationRelativeTo(null);
+        frame.setLayout(new BorderLayout());
+
+        tabbedPane = new JTabbedPane();
 
         initializeMenu();
 
@@ -37,11 +42,11 @@ public class MainWindow {
     }
 
     private void initializeMenu() {
-        JTabbedPane tabbedPane = new JTabbedPane();
+        tabbedPane = new JTabbedPane();
 
-        mainMenu = new MainMenuPanel(frame, journal, writer, reader);
-        viewEntriesPanel = new ViewEntriesPanel(journal, reader);
-        addEntryPanel = new AddEntryPanel(window, journal, writer, viewEntriesPanel);
+        mainMenu = new MainMenuPanel(this, journal, writer, reader);
+        viewEntriesPanel = new ViewEntriesPanel(this, journal, reader);
+        addEntryPanel = new AddEntryPanel(this, journal, writer, viewEntriesPanel);
 
         tabbedPane.addTab("Main Menu", mainMenu);
         tabbedPane.addTab("Add Entry", addEntryPanel);
@@ -49,7 +54,8 @@ public class MainWindow {
 
         frame.setLayout(new BorderLayout());
 
-        frame.add(tabbedPane, BorderLayout.CENTER);
+        // frame.add(tabbedPane, BorderLayout.CENTER);
+        frame.getContentPane().add(tabbedPane);
 
         frame.addWindowListener(new WindowAdapter() {
             @Override
@@ -57,6 +63,28 @@ public class MainWindow {
                 promptSaveData();
             }
         });
+    }
+
+    public void switchToMainMenu() {
+        if (tabbedPane.getTabCount() > 0) {
+            tabbedPane.setSelectedIndex(0);
+        }
+    }
+
+    public void switchToAddEntry() {
+        if (tabbedPane.getTabCount() > 1) {
+            tabbedPane.setSelectedIndex(1);
+        }
+    }
+
+    public void switchToViewEntries() {
+        if (tabbedPane.getTabCount() > 2) {
+            tabbedPane.setSelectedIndex(2);
+        }
+    }
+
+    public JFrame getFrame() {
+        return frame;
     }
 
     private void promptSaveData() {

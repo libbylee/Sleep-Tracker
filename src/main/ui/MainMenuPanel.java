@@ -7,18 +7,19 @@ import persistence.JsonWriter;
 import java.awt.*;
 
 public class MainMenuPanel extends JPanel {
-    private JFrame window;
+    //private JFrame window;
+    private MainWindow mainWindow;
     private SleepJournal journal;
     private JsonWriter writer;
     private JsonReader reader;
     private ViewEntriesPanel viewEntriesPanel;
 
-    public MainMenuPanel(JFrame window, SleepJournal journal, JsonWriter writer, JsonReader reader) {
-        this.window = window;
+    public MainMenuPanel(MainWindow mainWindow, SleepJournal journal, JsonWriter writer, JsonReader reader) {
+        this.mainWindow = mainWindow;
         this.journal = journal;
         this.writer = writer;
         this.reader = reader;
-        this.viewEntriesPanel = new ViewEntriesPanel(journal, reader);
+        this.viewEntriesPanel = new ViewEntriesPanel(mainWindow, journal, reader);
 
         setLayout(new BorderLayout());
 
@@ -35,11 +36,15 @@ public class MainMenuPanel extends JPanel {
         JButton viewAvgRatingButton = new JButton("View Average Sleep Rating");
         JButton quitButton = new JButton("Quit");
 
-        viewAllEntriesButton.addActionListener(e -> showViewEntriesPanel());
+        //viewAllEntriesButton.addActionListener(e -> showViewEntriesPanel());
 
-        addEntryButton.addActionListener(e -> showAddEntryPanel());
+        //addEntryButton.addActionListener(e -> showAddEntryPanel());
 
-        // Uncomment when those panels are implemented
+        viewAllEntriesButton.addActionListener(e -> mainWindow.switchToViewEntries());
+        addEntryButton.addActionListener(e -> mainWindow.switchToAddEntry());
+
+
+        // TODO: Uncomment when those panels are implemented
         // viewAvgEntriesButton.addActionListener(e -> showAverageEntriesPanel());
         // viewAvgRatingButton.addActionListener(e -> showAverageScorePanel());
         quitButton.addActionListener(e -> System.exit(0));
@@ -55,8 +60,8 @@ public class MainMenuPanel extends JPanel {
 
         JLabel titleLabel = new JLabel("Welcome to the Sleep Journal App", JLabel.CENTER);
         titleLabel.setFont(new Font("Times New Roman", Font.BOLD, 32));
-        
-        ImageIcon titleIcon = getResizedBook(); 
+
+        ImageIcon titleIcon = getResizedBook();
         JLabel emojiLabel = new JLabel(titleIcon);
 
         titlePanel.add(titleLabel);
@@ -73,7 +78,7 @@ public class MainMenuPanel extends JPanel {
         buttonPanel.add(quitButton);
     }
 
-        // MODIFIES: ImageIcon
+    // MODIFIES: ImageIcon
     // EFFECTS: loads and resizes save entry success icon
     private ImageIcon getResizedBook() {
         ImageIcon saveJournalIcon = new ImageIcon("journalicon.png");
@@ -83,29 +88,29 @@ public class MainMenuPanel extends JPanel {
         return saveJournalIcon;
     }
 
-    // EFFECTS: Switches to View Entries Panel
-    private void showViewEntriesPanel() {
-        if (viewEntriesPanel == null) {
-            viewEntriesPanel = new ViewEntriesPanel(journal, reader);
-        }
-        window.getContentPane().removeAll();
-        window.getContentPane().add(viewEntriesPanel, BorderLayout.CENTER);
-        window.revalidate();
-        window.repaint();
-    }
+    // // EFFECTS: Switches to View Entries Panel
+    // private void showViewEntriesPanel() {
+    //     if (viewEntriesPanel == null) {
+    //         viewEntriesPanel = new ViewEntriesPanel(window, journal, reader);
+    //     }
+    //     window.getContentPane().removeAll();
+    //     window.getContentPane().add(viewEntriesPanel, BorderLayout.CENTER);
+    //     window.revalidate();
+    //     window.repaint();
+    // }
 
-    // EFFECTS: Switches to Add Entry Panel
-    private void showAddEntryPanel() {
-        if (window == null) {
-            System.out.println("Error: JFrame window is null.");
-            return;
-        }
-        AddEntryPanel addEntryPanel = new AddEntryPanel(window, journal, writer, viewEntriesPanel);
-        window.getContentPane().removeAll();
-        window.getContentPane().add(addEntryPanel, BorderLayout.CENTER);
-        window.revalidate();
-        window.repaint();
-    }
+    // // EFFECTS: Switches to Add Entry Panel
+    // private void showAddEntryPanel() {
+    //     if (window == null) {
+    //         System.out.println("Error: JFrame window is null.");
+    //         return;
+    //     }
+    //     AddEntryPanel addEntryPanel = new AddEntryPanel(window, journal, writer, viewEntriesPanel);
+    //     window.getContentPane().removeAll();
+    //     window.getContentPane().add(addEntryPanel, BorderLayout.CENTER);
+    //     window.revalidate();
+    //     window.repaint();
+    // }
 }
 
 // Uncomment and implement these methods when necessary
