@@ -25,9 +25,9 @@ public class SleepJournal implements Writable {
 
     // REQUIRES: SleepEntry != null
     // MODIFIES: this
-    // EFFECTS: setsleepJournal list to a new one 
+    // EFFECTS: setsleepJournal list to a new, sorted one 
     public void setEntries(List<SleepEntry> entries) {
-        this.sleepJournal = new ArrayList<>(entries); // Replaces the current list with the sorted one
+        this.sleepJournal = new ArrayList<>(entries); 
     }
 
     // REQUIRES: index number is a valid index in the SleepEntry list
