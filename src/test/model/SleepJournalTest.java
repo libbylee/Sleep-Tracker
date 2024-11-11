@@ -3,6 +3,7 @@ package model;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.time.LocalDate;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -97,9 +98,26 @@ public class SleepJournalTest {
         assertEquals("4.8", sleepJournalTest.averageHoursSlept());
     }
 
+
     @Test
     void testAverageHoursSleptWithEmptyJournal(){
         assertEquals("0.0", sleepJournalTest.averageHoursSlept());
+    }
+
+     @Test
+    public void testSetEntries() {
+        List<SleepEntry> sortedEntries = new ArrayList<>();
+        sortedEntries.add(entry2); 
+        sortedEntries.add(entry3); 
+        sortedEntries.add(entry1); 
+        
+        sleepJournalTest.setEntries(sortedEntries);
+
+        List<SleepEntry> entriesAfterSort = sleepJournalTest.getAllEntries();
+
+        assertEquals(entry2, entriesAfterSort.get(0)); 
+        assertEquals(entry3, entriesAfterSort.get(1)); 
+        assertEquals(entry1, entriesAfterSort.get(2)); 
     }
 
     @Test
