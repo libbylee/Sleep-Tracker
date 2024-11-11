@@ -7,7 +7,7 @@ public class MainMenu extends JPanel {
     public MainMenu() {
         setLayout(new BorderLayout());
 
-        JLabel label = new JLabel("View Entries", JLabel.CENTER);
+        JLabel label = new JLabel("View All Entries", JLabel.CENTER);
         label.setFont(new Font("Arial", Font.BOLD, 24));
 
         JTextArea entriesArea = new JTextArea();
