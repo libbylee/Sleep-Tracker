@@ -4,6 +4,7 @@ import javax.swing.*;
 
 import model.SleepEntry;
 import model.SleepJournal;
+import persistence.JsonReader;
 import persistence.JsonWriter;
 
 import java.time.LocalDate;
@@ -19,13 +20,16 @@ public class AddEntryPanel extends JPanel {
     private SleepJournal sleepJournal;
     private JsonWriter writer;
     private ViewEntriesPanel viewEntriesPanel;
+    private JFrame window;
 
     // MODIFIES: this
     // EFFECTS: Creates an add entry panel with buttons for sleepJournal functions
-    public AddEntryPanel(SleepJournal journal, JsonWriter writer, ViewEntriesPanel viewEntriesPanel) {
+    public AddEntryPanel(JFrame window, SleepJournal journal, JsonWriter writer, ViewEntriesPanel viewEntriesPanel) {
+        this.window = window;
         this.sleepJournal = journal;
         this.writer = writer;
         this.viewEntriesPanel = viewEntriesPanel;
+
         setLayout(new BorderLayout());
 
         JLabel label = new JLabel("Add a new entry!", JLabel.CENTER);
@@ -34,12 +38,20 @@ public class AddEntryPanel extends JPanel {
         JPanel entryForm = createEntryForm();
 
         saveButton = new JButton("Save Entry");
-        saveButton.setPreferredSize(new Dimension(500, 75)); // Set button size
-        saveButton.setFont(new Font("Arial", Font.BOLD, 28)); // Increase font size
-        saveButton.addActionListener(e -> addEntry()); // Link button to action
+        saveButton.setPreferredSize(new Dimension(500, 75));
+        saveButton.setFont(new Font("Arial", Font.BOLD, 28));
+        saveButton.addActionListener(e -> addEntry());
+
+        JButton goBackButton = new JButton("Go Back");
+        goBackButton.addActionListener(e -> goBackToMainMenu());
+
+        ImageIcon saveIcon = getResizedNerdImage();
+        JLabel saveIconLabel = new JLabel(saveIcon);
 
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        buttonPanel.add(saveIconLabel);
         buttonPanel.add(saveButton);
+        buttonPanel.add(goBackButton);
 
         add(label, BorderLayout.NORTH);
         add(entryForm, BorderLayout.CENTER);
@@ -50,6 +62,16 @@ public class AddEntryPanel extends JPanel {
     // EFFECTS: Sets the ViewEntriesPanel reference for refreshing the entries list
     public void setViewEntriesPanel(ViewEntriesPanel panel) {
         this.viewEntriesPanel = panel;
+    }
+
+    // EFFECTS: Returns user back to the main menu
+    private void goBackToMainMenu() {
+        MainMenuPanel mainMenuPanel = new MainMenuPanel(window, sleepJournal, writer,
+                new JsonReader("data/sleepJournal.json"));
+        window.getContentPane().removeAll();
+        window.getContentPane().add(mainMenuPanel, BorderLayout.CENTER);
+        window.revalidate();
+        window.repaint();
     }
 
     // MODIFIES: this
@@ -89,7 +111,7 @@ public class AddEntryPanel extends JPanel {
 
             saveSleepJournalToFile();
 
-            ImageIcon successNerdIcon = getResizedNerdImage();
+            ImageIcon successNerdIcon = getNerdGIF();
 
             JLabel messageLabel = new JLabel("Entry added successfully!");
             messageLabel.setFont(new Font("Arial", Font.BOLD, 42)); // Increase font size (adjust 16 to preferred size)
@@ -111,12 +133,21 @@ public class AddEntryPanel extends JPanel {
         }
     }
 
-    private ImageIcon getResizedNerdImage() {
-        ImageIcon successNerdIcon = new ImageIcon("nerdemoji.jpg");
-        Image nerdimage = successNerdIcon.getImage();
-        Image resizedNerdImage = nerdimage.getScaledInstance(80, 80, Image.SCALE_SMOOTH);
-        successNerdIcon = new ImageIcon(resizedNerdImage);
+    // MODIFIES: ImageIcon
+    // EFFECTS: loads and resizes save entry success icon
+    private ImageIcon getNerdGIF() {
+        ImageIcon successNerdIcon = new ImageIcon("animatednerd.gif");
         return successNerdIcon;
+    }
+
+    // MODIFIES: ImageIcon
+    // EFFECTS: loads and resizes save entry success icon
+    private ImageIcon getResizedNerdImage() {
+        ImageIcon saveNerdIcon = new ImageIcon("nerdemoji.jpg");
+        Image nerdimage = saveNerdIcon.getImage();
+        Image resizedNerdImage = nerdimage.getScaledInstance(80, 80, Image.SCALE_SMOOTH);
+        saveNerdIcon = new ImageIcon(resizedNerdImage);
+        return saveNerdIcon;
     }
 
     // MODIFIES: this

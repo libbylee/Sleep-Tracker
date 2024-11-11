@@ -6,16 +6,9 @@ import model.SleepJournal;
 import persistence.JsonWriter;
 import persistence.JsonReader;
 
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.FontMetrics;
-import java.awt.Graphics;
-import java.awt.GridLayout;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.BorderLayout;
-import model.SleepJournal;
 
 public class MainWindow {
     JFrame frame;
@@ -48,7 +41,7 @@ public class MainWindow {
 
         mainMenu = new MainMenuPanel(frame, journal, writer, reader);
         viewEntriesPanel = new ViewEntriesPanel(journal, reader);
-        addEntryPanel = new AddEntryPanel(journal, writer, viewEntriesPanel);
+        addEntryPanel = new AddEntryPanel(window, journal, writer, viewEntriesPanel);
 
         tabbedPane.addTab("Main Menu", mainMenu);
         tabbedPane.addTab("Add Entry", addEntryPanel);
