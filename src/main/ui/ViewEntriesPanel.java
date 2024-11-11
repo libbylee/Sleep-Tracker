@@ -15,39 +15,42 @@ public class ViewEntriesPanel extends JPanel {
     private SleepJournal journal;
     private JTextArea entriesArea;
     private JsonReader jsonReader;
-    private JsonWriter writer;
     private JButton loadJournalButton;
+    private JComboBox<String> sortComboBox;
 
     // EFFECTS: Creates a panel to view all sleep entries from the journal
     public ViewEntriesPanel(MainWindow mainWindow, SleepJournal journal, JsonReader reader) {
         this.mainWindow = mainWindow;
-        // this.window = window;
         this.journal = journal;
         this.jsonReader = reader;
 
         setLayout(new BorderLayout());
 
         loadJournalButton = new JButton("Load Journal");
-        loadJournalButton.addActionListener(e -> loadEntriesFromFile());
-        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
-        buttonPanel.add(loadJournalButton);
-        add(buttonPanel, BorderLayout.SOUTH);
+        loadJournalButton.addActionListener(e -> loadEntriesFromFile()); // Button action to load entries
+        JPanel loadButtonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        loadButtonPanel.add(loadJournalButton);
+        add(loadButtonPanel, BorderLayout.SOUTH);
 
+        
         JLabel label = new JLabel("View All Entries", JLabel.CENTER);
         label.setFont(new Font("Arial", Font.BOLD, 32));
 
-        setupButtons();
+        String[] sortOptions = {"Sort by Highest Rating", "Sort by Most Hours Slept"};
+        sortComboBox = new JComboBox<>(sortOptions);
+        sortComboBox.addActionListener(e -> sortEntries()); // Sort entries when an option is selected
+        JPanel sortPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));  // Optional: Change layout
+        sortPanel.add(sortComboBox);
+        add(sortPanel, BorderLayout.NORTH);
 
         entriesArea = new JTextArea(15, 50);
-        entriesArea.setEditable(false); // Make it non-editable
+        entriesArea.setEditable(false);
         entriesArea.setFont(new Font("Arial", Font.PLAIN, 18));
 
-        loadEntriesFromFile();
-
         JScrollPane scrollPane = new JScrollPane(entriesArea);
-
-        add(label, BorderLayout.NORTH);
         add(scrollPane, BorderLayout.CENTER);
+
+        setupButtons();
     }
 
     // MODIFIES: this
@@ -55,19 +58,14 @@ public class ViewEntriesPanel extends JPanel {
     private void setupButtons() {
         JPanel buttonPanel = new JPanel(new FlowLayout());
 
-        JButton loadButton = new JButton("Load Journal");
+        JButton loadButton = new JButton("Load Existing Entries");
         loadButton.setFont(new Font("Arial", Font.BOLD, 16));
-        // loadButton.addActionListener(e -> loadJournal());
-
-        JButton saveButton = new JButton("Save Journal");
-        saveButton.setFont(new Font("Arial", Font.BOLD, 16));
-        // saveButton.addActionListener(e -> saveJournal());
+        loadButton.addActionListener(e -> loadEntriesFromFile());
 
         JButton goBackButton = new JButton("Go Back");
         goBackButton.addActionListener(e -> goBackToMainMenu());
 
         buttonPanel.add(loadButton);
-        buttonPanel.add(saveButton);
         buttonPanel.add(goBackButton);
 
         add(buttonPanel, BorderLayout.SOUTH);
@@ -85,11 +83,7 @@ public class ViewEntriesPanel extends JPanel {
         }
     }
 
-     //EFFECTS: goes back to main menu 
-     private void goBackToMainMenu() {
-        mainWindow.switchToMainMenu();
-    }
-
+    // EFFECTS: Displays the entries in the text area
     private void displayEntries() {
         List<SleepEntry> entries = journal.getAllEntries();
         StringBuilder sb = new StringBuilder();
@@ -104,10 +98,32 @@ public class ViewEntriesPanel extends JPanel {
             sb.append("Hours Slept: ").append(entry.getHoursSlept()).append("\n");
             sb.append("Sleep Rating: ").append(entry.getSleepRating()).append("\n");
             sb.append("Notes: ").append(entry.getSleepNote()).append("\n");
-            sb.append("------------------------------------------------------------\n");
+            sb.append("---------------------------------------------------------------------------\n");
         }
 
         entriesArea.setText(sb.toString());
+    }
+
+    // MODIFIES: this
+    // EFFECTS: Sorts the entries based on the selected option (either by rating or hours slept)
+    private void sortEntries() {
+        List<SleepEntry> entries = journal.getAllEntries();
+
+        String selectedOption = (String) sortComboBox.getSelectedItem();
+
+        // Sort entries based on the selected option
+        if ("Sort by Highest Rating".equals(selectedOption)) {
+            entries.sort((entry1, entry2) -> Double.compare(entry2.getSleepRating(), entry1.getSleepRating()));
+        } else if ("Sort by Most Hours Slept".equals(selectedOption)) {
+            entries.sort((entry1, entry2) -> Double.compare(entry2.getHoursSlept(), entry1.getHoursSlept()));
+        }
+
+        displayEntries(); 
+    }
+
+    // EFFECTS: goes back to main menu
+    private void goBackToMainMenu() {
+        mainWindow.switchToMainMenu();
     }
 
     public void refreshDisplay() {

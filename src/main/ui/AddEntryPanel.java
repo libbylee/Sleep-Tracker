@@ -4,7 +4,6 @@ import javax.swing.*;
 
 import model.SleepEntry;
 import model.SleepJournal;
-import persistence.JsonReader;
 import persistence.JsonWriter;
 
 import java.time.LocalDate;
