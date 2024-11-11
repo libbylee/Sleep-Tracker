@@ -2,6 +2,8 @@ package ui;
 
 import javax.swing.*;
 
+import model.SleepJournal;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -11,12 +13,16 @@ import java.awt.GridLayout;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.BorderLayout;
+import model.SleepJournal;
 
 public class MainWindow {
     JFrame frame;
     JPanel panel;
+    SleepJournal journal;
 
     public MainWindow() {
+        journal = new SleepJournal();
+
         frame = new JFrame("Sleep Tracking Journal");
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setSize(800, 500);
@@ -31,12 +37,14 @@ public class MainWindow {
     private void initializeMenu() {
         JTabbedPane tabbedPane = new JTabbedPane();
 
-        JPanel addEntryPanel = new AddEntryPanel();
+        JPanel mainMenu = new MainMenu();
+        JPanel addEntryPanel = new AddEntryPanel(journal);
         JPanel viewEntriesPanel = new ViewEntriesPanel();
 
+        tabbedPane.addTab("Main Menu", mainMenu);
         tabbedPane.addTab("Add Entry", addEntryPanel);
         tabbedPane.addTab("View Entries", viewEntriesPanel);
-        
+
         frame.setLayout(new BorderLayout());
 
         frame.add(tabbedPane, BorderLayout.CENTER);
@@ -62,7 +70,3 @@ public class MainWindow {
         SwingUtilities.invokeLater(MainWindow::new);
     }
 }
-
-// JPanel panel = new JPanel();
-
-// panel.setBorder();
