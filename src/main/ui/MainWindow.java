@@ -23,7 +23,9 @@ public class MainWindow {
     MainMenuPanel mainMenu;
     JFrame window;
     JTabbedPane tabbedPane;
+    AverageStatsPanel averageStatsPanel;
 
+    // EFFECTS: loads a main menu which allows user to choose where they want to go
     public MainWindow() {
         journal = new SleepJournal();
         writer = new JsonWriter("data/SleepJournal.json");
@@ -44,20 +46,23 @@ public class MainWindow {
         frame.setVisible(true);
     }
 
+    // MODIFIES: this
+    // EFFECTS: intializes the main menu
     private void initializeMenu() {
         tabbedPane = new JTabbedPane();
 
         mainMenu = new MainMenuPanel(this, journal, writer, reader);
         viewEntriesPanel = new ViewEntriesPanel(this, journal, reader);
         addEntryPanel = new AddEntryPanel(this, journal, writer, viewEntriesPanel);
+        averageStatsPanel = new AverageStatsPanel(this, journal);
 
         tabbedPane.addTab("Main Menu", mainMenu);
         tabbedPane.addTab("Add Entry", addEntryPanel);
         tabbedPane.addTab("View Entries", viewEntriesPanel);
+        tabbedPane.addTab("Stats", averageStatsPanel);
 
         frame.setLayout(new BorderLayout());
 
-        // frame.add(tabbedPane, BorderLayout.CENTER);
         frame.getContentPane().add(tabbedPane);
 
         frame.addWindowListener(new WindowAdapter() {
@@ -69,39 +74,45 @@ public class MainWindow {
         });
     }
 
+    // MODIFIES: this
+    // EFFECTS: switches back to main menu
     public void switchToMainMenu() {
         if (tabbedPane.getTabCount() > 0) {
             tabbedPane.setSelectedIndex(0);
         }
     }
 
+    // MODIFIES: this
+    // EFFECTS: switches to add entry panel
     public void switchToAddEntry() {
         if (tabbedPane.getTabCount() > 1) {
             tabbedPane.setSelectedIndex(1);
         }
     }
 
+    // MODIFIES: this
+    // EFFECTS: switches to view entry panel
     public void switchToViewEntries() {
         if (tabbedPane.getTabCount() > 2) {
             tabbedPane.setSelectedIndex(2);
         }
     }
 
+    // MODIFIES: this
+    // EFFECTS: switches to average stats panel
+    public void switchToAverageStatsPanel() {
+        if (tabbedPane.getTabCount() > 3) {
+            tabbedPane.setSelectedIndex(3);
+        }
+    }
+
+    // MODIFIES: this
+    // EFFECTS: returns frame
     public JFrame getFrame() {
         return frame;
     }
 
-    // // EFFECTS: shows prompting to ask to save data
-    // private void promptSaveData() {
-    // int result = JOptionPane.showConfirmDialog(frame, "Save data to file?", "Save
-    // Data",
-    // JOptionPane.YES_NO_OPTION);
-    // if (result == JOptionPane.YES_OPTION) {
-    // addEntryPanel.saveSleepJournalToFile();
-    // }
-    // frame.dispose();
-    // }
-
+    // MODIFIES: this
     // EFFECTS: shows prompting to ask to save data
     private void promptSaveData(JDialog dialog) {
         ImageIcon wonder = new ImageIcon("thinkinganimated.gif");

@@ -31,24 +31,16 @@ public class MainMenuPanel extends JPanel {
 
         JButton viewAllEntriesButton = new JButton("View All Entries");
         JButton addEntryButton = new JButton("Add Entry");
-        JButton viewAvgEntriesButton = new JButton("View Average Hours Slept");
-        JButton viewAvgRatingButton = new JButton("View Average Sleep Rating");
+        JButton viewAvgRatingButton = new JButton("Average Stats");
         JButton quitButton = new JButton("Quit");
-
-        //viewAllEntriesButton.addActionListener(e -> showViewEntriesPanel());
-
-        //addEntryButton.addActionListener(e -> showAddEntryPanel());
 
         viewAllEntriesButton.addActionListener(e -> mainWindow.switchToViewEntries());
         addEntryButton.addActionListener(e -> mainWindow.switchToAddEntry());
+        viewAvgRatingButton.addActionListener(e -> mainWindow.switchToAverageStatsPanel());
 
-
-        // TODO: Uncomment when those panels are implemented
-        // viewAvgEntriesButton.addActionListener(e -> showAverageEntriesPanel());
-        // viewAvgRatingButton.addActionListener(e -> showAverageScorePanel());
         quitButton.addActionListener(e -> System.exit(0));
 
-        addButtonsToPanel(buttonPanel, viewAllEntriesButton, addEntryButton, viewAvgEntriesButton, viewAvgRatingButton,
+        addButtonsToPanel(buttonPanel, viewAllEntriesButton, addEntryButton, viewAvgRatingButton,
                 quitButton);
 
         add(buttonPanel, BorderLayout.CENTER);
@@ -69,12 +61,11 @@ public class MainMenuPanel extends JPanel {
     }
 
     // MODIFIES: buttonPanel
-    // EFFECTS: adds buttons to panel 
+    // EFFECTS: adds buttons to panel
     private void addButtonsToPanel(JPanel buttonPanel, JButton viewAllEntriesButton, JButton addEntryButton,
-            JButton viewAvgEntriesButton, JButton viewAvgRatingButton, JButton quitButton) {
+            JButton viewAvgRatingButton, JButton quitButton) {
         buttonPanel.add(viewAllEntriesButton);
         buttonPanel.add(addEntryButton);
-        buttonPanel.add(viewAvgEntriesButton);
         buttonPanel.add(viewAvgRatingButton);
         buttonPanel.add(quitButton);
     }

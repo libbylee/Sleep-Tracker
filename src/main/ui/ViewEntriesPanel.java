@@ -3,7 +3,6 @@ package ui;
 import model.SleepEntry;
 import model.SleepJournal;
 import persistence.JsonReader;
-import persistence.JsonWriter;
 
 import javax.swing.*;
 import java.awt.*;
@@ -27,16 +26,15 @@ public class ViewEntriesPanel extends JPanel {
         setLayout(new BorderLayout());
 
         loadJournalButton = new JButton("Load Journal");
-        loadJournalButton.addActionListener(e -> loadEntriesFromFile()); // Button action to load entries
+        loadJournalButton.addActionListener(e -> loadEntriesFromFile());
         JPanel loadButtonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         loadButtonPanel.add(loadJournalButton);
         add(loadButtonPanel, BorderLayout.SOUTH);
 
-        
         JLabel label = new JLabel("View All Entries", JLabel.CENTER);
         label.setFont(new Font("Arial", Font.BOLD, 32));
 
-        String[] sortOptions = {"Sort by Highest Rating", "Sort by Most Hours Slept"};
+        String[] sortOptions = { "Sort by Highest Rating", "Sort by Most Hours Slept" };
         sortComboBox = new JComboBox<>(sortOptions);
         sortComboBox.addActionListener(e -> sortEntries());
         JPanel sortPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
@@ -72,7 +70,8 @@ public class ViewEntriesPanel extends JPanel {
     }
 
     // MODIFIES: this
-    // EFFECTS: Loads the entries from the file using JsonReader and updates the text area
+    // EFFECTS: Loads the entries from the file using JsonReader and updates the
+    // text area
     private void loadEntriesFromFile() {
         try {
             journal = jsonReader.read();
@@ -104,8 +103,9 @@ public class ViewEntriesPanel extends JPanel {
     }
 
     // MODIFIES: this
-    // EFFECTS: Sorts the entries based on the selected option (either by rating or hours slept)
-    private void sortEntries(){
+    // EFFECTS: Sorts the entries based on the selected option (either by rating or
+    // hours slept)
+    private void sortEntries() {
         List<SleepEntry> entries = journal.getAllEntries();
 
         String selectedOption = (String) sortComboBox.getSelectedItem();
@@ -118,7 +118,7 @@ public class ViewEntriesPanel extends JPanel {
 
         journal.setEntries(entries);
 
-        displayEntries(); 
+        displayEntries();
     }
 
     // EFFECTS: goes back to main menu
@@ -127,7 +127,7 @@ public class ViewEntriesPanel extends JPanel {
     }
 
     // MODIFIES: this
-    // EFFECTS: refreshes the display 
+    // EFFECTS: refreshes the display
     public void refreshDisplay() {
         loadEntriesFromFile();
     }

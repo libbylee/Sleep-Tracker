@@ -22,7 +22,8 @@ public class AddEntryPanel extends JPanel {
     private MainWindow mainWindow;
 
     // MODIFIES: this
-    // EFFECTS: Creates an add entry panel with buttons for sleepJournal functions
+    // EFFECTS: Creates an add entry panel with buttons corresponding to sleep 
+    // journal functions 
     public AddEntryPanel(MainWindow mainWindow, SleepJournal journal, JsonWriter writer,
             ViewEntriesPanel viewEntriesPanel) {
         this.mainWindow = mainWindow;
@@ -31,9 +32,9 @@ public class AddEntryPanel extends JPanel {
         this.viewEntriesPanel = viewEntriesPanel;
 
         setLayout(new BorderLayout());
+        setBackground(new Color(223, 255, 229));
 
         JPanel titlePanel = setTitlePanel();
-
 
         JPanel entryForm = createEntryForm();
 
@@ -58,6 +59,8 @@ public class AddEntryPanel extends JPanel {
         add(buttonPanel, BorderLayout.SOUTH);
     }
 
+    // MODIFIES: this
+    // EFFECTS: creates a title Panel prompting to add a new entry
     private JPanel setTitlePanel() {
         JPanel titlePanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
 
@@ -105,8 +108,8 @@ public class AddEntryPanel extends JPanel {
         return entryForm;
     }
 
-    //MODIFIES: this 
-    //EFFECTS: Sets the layout for notes of entries 
+    // MODIFIES: this
+    // EFFECTS: Sets the layout for notes of entries
     private void setNotesLayout(JPanel entryForm) {
         JLabel noteLabel = new JLabel("Enter notes: ");
         noteLabel.setFont(new Font("Arial", Font.PLAIN, 16));
@@ -115,8 +118,8 @@ public class AddEntryPanel extends JPanel {
         entryForm.add(new JScrollPane(notesArea));
     }
 
-    //MODIFIES: this 
-    //EFFECTS: Sets the layout for sleep ratings of entries 
+    // MODIFIES: this
+    // EFFECTS: Sets the layout for sleep ratings of entries
     private void setRatingLayout(JPanel entryForm, JLabel hourLabel) {
         JLabel ratingLabel = new JLabel("Enter Sleep Rating (1-10):");
         hourLabel.setFont(new Font("Arial", Font.PLAIN, 16));
@@ -126,8 +129,8 @@ public class AddEntryPanel extends JPanel {
         entryForm.add(ratingField);
     }
 
-    //MODIFIES: this 
-    //EFFECTS: Sets the layout for number of hours slept in entires 
+    // MODIFIES: this
+    // EFFECTS: Sets the layout for number of hours slept in entires
     private JLabel setHoursSleptLayout(JPanel entryForm) {
         JLabel hourLabel = new JLabel("Enter Hours Slept:");
         hourLabel.setFont(new Font("Arial", Font.PLAIN, 16));
@@ -138,8 +141,8 @@ public class AddEntryPanel extends JPanel {
         return hourLabel;
     }
 
-    //MODIFIES: this 
-    //EFFECTS: Sets the layout for dates in entries 
+    // MODIFIES: this
+    // EFFECTS: Sets the layout for dates in entries
     private void setDateLayout(JPanel entryForm) {
         JLabel dateLabel = new JLabel("Enter Date (YYYY-MM-DD):");
         dateLabel.setFont(new Font("Arial", Font.PLAIN, 16));
@@ -162,19 +165,8 @@ public class AddEntryPanel extends JPanel {
             sleepJournal.addSleepEntryToSleepJournal(entry);
 
             saveSleepJournalToFile();
-
-            ImageIcon successNerdIcon = getNerdGIF();
-
-            JLabel messageLabel = new JLabel("Entry added successfully!");
-            messageLabel.setFont(new Font("Arial", Font.BOLD, 42)); 
-
-            JOptionPane.showMessageDialog(this, messageLabel, "success",
-                    JOptionPane.INFORMATION_MESSAGE, successNerdIcon);
-
-            dateField.setText("");
-            hoursSleptField.setText("");
-            ratingField.setText("");
-            notesArea.setText("");
+            getSuccessMessage();
+            resetEntry();
 
             if (viewEntriesPanel != null) {
                 viewEntriesPanel.refreshDisplay();
@@ -183,9 +175,31 @@ public class AddEntryPanel extends JPanel {
         } catch (Exception ex) {
             ImageIcon laughingIcon = getResizedLaughingIcon();
             JLabel messageLabelFail = new JLabel("Invalid input. Please check the format of your data.");
-            messageLabelFail.setFont(new Font("Arial", Font.BOLD, 16)); 
-            JOptionPane.showMessageDialog(this, messageLabelFail, "Retry", JOptionPane.INFORMATION_MESSAGE, laughingIcon);
+            messageLabelFail.setFont(new Font("Arial", Font.BOLD, 16));
+            JOptionPane.showMessageDialog(this, messageLabelFail, "Retry",
+                    JOptionPane.INFORMATION_MESSAGE, laughingIcon);
         }
+    }
+
+    // MODIFIES: this
+    // EFFECTS: creates a message upon a successful push of the add entry button
+    private void getSuccessMessage() {
+        ImageIcon successNerdIcon = getNerdGIF();
+
+        JLabel messageLabel = new JLabel("Entry added successfully!");
+        messageLabel.setFont(new Font("Arial", Font.BOLD, 42));
+
+        JOptionPane.showMessageDialog(this, messageLabel, "success",
+                JOptionPane.INFORMATION_MESSAGE, successNerdIcon);
+    }
+
+    // MODIFIES: this
+    // EFFECTS: resets entry fields
+    private void resetEntry() {
+        dateField.setText("");
+        hoursSleptField.setText("");
+        ratingField.setText("");
+        notesArea.setText("");
     }
 
     // MODIFIES: ImageIcon
@@ -197,7 +211,6 @@ public class AddEntryPanel extends JPanel {
         saveLaughingIcon = new ImageIcon(resizedLaughing);
         return saveLaughingIcon;
     }
-
 
     // MODIFIES: ImageIcon
     // EFFECTS: loads nerd gif
