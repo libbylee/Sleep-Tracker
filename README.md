@@ -16,6 +16,7 @@ In addition, I'd be able to log my dreams and rate the quality of sleep I've had
 - Ability to track your dreams by writing a note  
 - Ability to go back and view all entries
 - Ability to see the average sleep rating + number of hours you've slept
+- Ability to sort sleep entries by highest rating and highest sleep quality
 
 #### My X and Y: 
 - X = sleepEntry Y = sleepJournal
@@ -31,23 +32,26 @@ In addition, I'd be able to log my dreams and rate the quality of sleep I've had
 ##### Log total hours slept and sleep quality for a specific date:
 *As a user, I want to log the number of hours I slept, rate the quality, as well as add notes of my sleep for a specific date so I can track how well I’m sleeping each night.*
 
+##### Sort sleep entries by ratings and number of horus slept 
+*As a user, I want to be able to see the entries in which I have had the highest number of hours of sleep and the highest ratings of sleep.*
+
 ##### View average sleep hours and quality:
 *As a user, I want to be able to see the average hours I’ve slept and the average sleep quality of my entries, so I can analyze my overall sleep patterns and make adjustments if needed.*
 
-##### Save SleepJournal to a file:
-*As a user, when I select the quit option from the application menu, I want to be reminded to save my to-do list to a file and have the option to do so or not.*
+##### Save SleepJournal:
+*As a user, when I select the quit option from the application menu, I want to be reminded to save my to-do list and have the option to do so or not.*
 
-##### Load SleepJournal from a file:
-*As a user, when I start the application, I want to be given the option to load my sleepJournal from a file.*
+##### Load SleepJournal:
+*As a user, when I start the application, I want to be given the option to load my sleepJournal*
+
+## Instructions for End User
+
+- You can generate the first required action related to the user story "adding multiple entries to a sleep journal" by clicking add entry
+- You can generate the second reqiured action related to the user story "
+- You can locate my visual component by saving an entry, exiting out of the app as well as viewing beside the icons
+- You can save the state of my application by pressing save when adding a new entry
+- You can reload the state of my application by pressing load all entries in the view all entries page 
 
 #### Source code used: 
 University of British Columbia. (n.d.). TellerApp. GitHub. https://github.students.cs.ubc.ca/CPSC210/TellerApp
 University of British Columbia. (n.d.). JsonSerializationDemo. GitHub. https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
-
-## Instructions for End User
-
-- You can generate the first required action related to the user story "adding multiple Xs to a Y" by...
-- You can generate the second required action related to the user story "adding multiple Xs to a Y" by...
-- You can locate my visual component by...
-- You can save the state of my application by...
-- You can reload the state of my application by...
