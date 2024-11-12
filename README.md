@@ -32,7 +32,7 @@ In addition, I'd be able to log my dreams and rate the quality of sleep I've had
 ##### Log total hours slept and sleep quality for a specific date:
 *As a user, I want to log the number of hours I slept, rate the quality, as well as add notes of my sleep for a specific date so I can track how well I’m sleeping each night.*
 
-##### Sort sleep entries by ratings and number of horus slept 
+##### Sort sleep entries by ratings and number of hours slept 
 *As a user, I want to be able to see the entries in which I have had the highest number of hours of sleep and the highest ratings of sleep.*
 
 ##### View average sleep hours and quality:
@@ -47,8 +47,9 @@ In addition, I'd be able to log my dreams and rate the quality of sleep I've had
 ## Instructions for End User
 
 - You can generate the first required action related to the user story "adding multiple entries to a sleep journal" by clicking add entry
-- You can generate the second reqiured action related to the user story "
-- You can locate my visual component by saving an entry, exiting out of the app as well as viewing beside the icons
+- You can generate the second reqiured action related to the user story "viewing average hours and average sleep quality of entries" by clicking "view average hours" in the main menu
+- You can generate a third action related to the user story "sorting the entries by highest number of hours and highest sleep rating" by clicking the sort by... block in view all entries 
+- You can locate my visual component by saving an entry and exiting out of the app as well
 - You can save the state of my application by pressing save when adding a new entry
 - You can reload the state of my application by pressing load all entries in the view all entries page 
 
