@@ -56,3 +56,53 @@ In addition, I'd be able to log my dreams and rate the quality of sleep I've had
 #### Source code used: 
 University of British Columbia. (n.d.). TellerApp. GitHub. https://github.students.cs.ubc.ca/CPSC210/TellerApp
 University of British Columbia. (n.d.). JsonSerializationDemo. GitHub. https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
+
+#### Phase 4: Task 2:
+Tue Nov 26 15:31:54 PST 2024
+SleepJournal initialized.
+Tue Nov 26 15:31:55 PST 2024
+SleepJournal initialized.
+Tue Nov 26 15:31:55 PST 2024
+SleepEntry added:
+ Date : 2024-08-09
+ Rating : 8.0
+Tue Nov 26 15:31:55 PST 2024
+SleepEntry added:
+ Date : 2024-09-09
+ Rating : 2.0
+Tue Nov 26 15:31:55 PST 2024
+SleepEntry added:
+ Date : 2024-11-26
+ Rating : 2.0
+Tue Nov 26 15:31:55 PST 2024
+Calculated average hours slept: 9.0
+Tue Nov 26 15:31:55 PST 2024
+Calculated average sleep rating: 4
+Tue Nov 26 15:31:58 PST 2024
+Accessed all SleepEntries.
+Tue Nov 26 15:31:58 PST 2024
+SleepJournal entries updated.
+Tue Nov 26 15:31:58 PST 2024
+Accessed all SleepEntries.
+Tue Nov 26 15:31:59 PST 2024
+SleepJournal initialized.
+Tue Nov 26 15:31:59 PST 2024
+SleepEntry added:
+ Date : 2024-08-09
+ Rating : 8.0
+Tue Nov 26 15:31:59 PST 2024
+SleepEntry added:
+ Date : 2024-09-09
+ Rating : 2.0
+Tue Nov 26 15:31:59 PST 2024
+SleepEntry added:
+ Date : 2024-11-26
+ Rating : 2.0
+Tue Nov 26 15:31:59 PST 2024
+Accessed all SleepEntries.
+Tue Nov 26 15:32:03 PST 2024
+Calculated average hours slept: 9.0
+Tue Nov 26 15:32:03 PST 2024
+Calculated average sleep rating: 4
+
+
