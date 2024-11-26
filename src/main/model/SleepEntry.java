@@ -16,7 +16,6 @@ public class SleepEntry implements Writable {
     // MODIFIES: this
     // EFFECTS: sleepentry is given a date, numbers of hours slept, a rating, and a
     // note
-
     public SleepEntry(LocalDate date, double hoursSlept, int sleepRating, String sleepNote) {
         this.date = date;
         this.hoursSlept = hoursSlept;

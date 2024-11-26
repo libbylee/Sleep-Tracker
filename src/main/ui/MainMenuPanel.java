@@ -38,7 +38,12 @@ public class MainMenuPanel extends JPanel {
         addEntryButton.addActionListener(e -> mainWindow.switchToAddEntry());
         viewAvgRatingButton.addActionListener(e -> mainWindow.switchToAverageStatsPanel());
 
-        quitButton.addActionListener(e -> System.exit(0));
+        quitButton.addActionListener(e -> {
+            for (model.Event event : model.EventLog.getInstance()) {
+                System.out.println(event.toString());
+            }
+            System.exit(0);
+        });
 
         addButtonsToPanel(buttonPanel, viewAllEntriesButton, addEntryButton, viewAvgRatingButton,
                 quitButton);
@@ -46,6 +51,8 @@ public class MainMenuPanel extends JPanel {
         add(buttonPanel, BorderLayout.CENTER);
     }
 
+    // MODIFIES: buttonPanel
+    // EFFECTS: initialize title panel
     private JPanel setTitlePanel() {
         JPanel titlePanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
 
