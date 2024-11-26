@@ -34,6 +34,18 @@ public class MainMenuPanel extends JPanel {
         JButton viewAvgRatingButton = new JButton("Average Stats");
         JButton quitButton = new JButton("Quit");
 
+        addActionListenerToButtons(mainWindow, viewAllEntriesButton, addEntryButton, viewAvgRatingButton, quitButton);
+
+        addButtonsToPanel(buttonPanel, viewAllEntriesButton, addEntryButton, viewAvgRatingButton,
+                quitButton);
+
+        add(buttonPanel, BorderLayout.CENTER);
+    }
+
+    // MODIFIES: buttonPanel
+    // EFFECTS: adds response/ action listener to buttons
+    private void addActionListenerToButtons(MainWindow mainWindow, JButton viewAllEntriesButton, JButton addEntryButton,
+            JButton viewAvgRatingButton, JButton quitButton) {
         viewAllEntriesButton.addActionListener(e -> mainWindow.switchToViewEntries());
         addEntryButton.addActionListener(e -> mainWindow.switchToAddEntry());
         viewAvgRatingButton.addActionListener(e -> mainWindow.switchToAverageStatsPanel());
@@ -44,11 +56,6 @@ public class MainMenuPanel extends JPanel {
             }
             System.exit(0);
         });
-
-        addButtonsToPanel(buttonPanel, viewAllEntriesButton, addEntryButton, viewAvgRatingButton,
-                quitButton);
-
-        add(buttonPanel, BorderLayout.CENTER);
     }
 
     // MODIFIES: buttonPanel
