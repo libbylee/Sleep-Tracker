@@ -68,6 +68,9 @@ public class MainWindow {
         frame.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
+                for (model.Event event : model.EventLog.getInstance()) {
+                    System.out.println(event.toString());
+                }
                 JDialog dialog = new JDialog(frame, "Confirmation", true);
                 promptSaveData(dialog);
             }

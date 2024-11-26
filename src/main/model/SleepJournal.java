@@ -25,7 +25,8 @@ public class SleepJournal implements Writable {
     // EFFECTS: adds a new sleep entry to the journal
     public void addSleepEntryToSleepJournal(SleepEntry entry) {
         sleepJournal.add(entry);
-        EventLog.getInstance().logEvent(new Event("SleepEntry added: " + entry));
+        EventLog.getInstance().logEvent(new Event("SleepEntry added: \n Date : " + entry.getDate() +
+                "\n Rating : " + entry.getSleepRating()));
     }
 
     // REQUIRES: SleepEntry != null
@@ -88,9 +89,10 @@ public class SleepJournal implements Writable {
         int totalSleepRatings = 0;
         for (SleepEntry sleepEntry : sleepJournal) {
             totalSleepRatings += sleepEntry.getSleepRating();
-            EventLog.getInstance().logEvent(new Event("Calculated average sleep rating: " + averageSleepRating()));
         }
-        return totalSleepRatings / sleepJournal.size();
+        int averageRating = totalSleepRatings / sleepJournal.size();
+        EventLog.getInstance().logEvent(new Event("Calculated average sleep rating: " + averageRating));
+        return averageRating;
     }
 
     @Override
