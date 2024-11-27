@@ -106,18 +106,14 @@ public class ViewEntriesPanel extends JPanel {
     // EFFECTS: Sorts the entries based on the selected option (either by rating or
     // hours slept)
     private void sortEntries() {
-        List<SleepEntry> entries = journal.getAllEntries();
-
         String selectedOption = (String) sortComboBox.getSelectedItem();
-
+    
         if ("Sort by Highest Rating".equals(selectedOption)) {
-            entries.sort((entry1, entry2) -> Double.compare(entry2.getSleepRating(), entry1.getSleepRating()));
+            journal.sortByRating();
         } else if ("Sort by Most Hours Slept".equals(selectedOption)) {
-            entries.sort((entry1, entry2) -> Double.compare(entry2.getHoursSlept(), entry1.getHoursSlept()));
+            journal.sortByHoursSlept();
         }
-
-        journal.setEntries(entries);
-
+    
         displayEntries();
     }
 

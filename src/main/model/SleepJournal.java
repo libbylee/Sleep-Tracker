@@ -25,8 +25,8 @@ public class SleepJournal implements Writable {
     // EFFECTS: adds a new sleep entry to the journal
     public void addSleepEntryToSleepJournal(SleepEntry entry) {
         sleepJournal.add(entry);
-        EventLog.getInstance().logEvent(new Event("SleepEntry added: \n Date : " + entry.getDate() +
-                "\n Rating : " + entry.getSleepRating()));
+        EventLog.getInstance().logEvent(new Event("SleepEntry added: \n Date : " + entry.getDate()
+                + "\n Rating : " + entry.getSleepRating()));
     }
 
     // REQUIRES: SleepEntry != null
@@ -112,6 +112,20 @@ public class SleepJournal implements Writable {
         }
 
         return jsonArray;
+    }
+
+    // MODIFIES: this
+    // EFFECTS: Sorts entries by sleep rating in descending order
+    public void sortByRating() {
+        sleepJournal.sort((entry1, entry2) -> Double.compare(entry2.getSleepRating(), entry1.getSleepRating()));
+        EventLog.getInstance().logEvent(new Event("SleepJournal sorted by sleep rating."));
+    }
+
+    // MODIFIES: this
+    // EFFECTS: Sorts entries by hours slept in descending order
+    public void sortByHoursSlept() {
+        sleepJournal.sort((entry1, entry2) -> Double.compare(entry2.getHoursSlept(), entry1.getHoursSlept()));
+        EventLog.getInstance().logEvent(new Event("SleepJournal sorted by hours slept."));
     }
 
     // EFFECTS: prints all logged events to the console
