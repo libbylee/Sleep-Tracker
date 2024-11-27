@@ -16,7 +16,6 @@ public class JsonWriterTest extends JsonTest {
     void testWriterInvalidFile() {
 
         try {
-            SleepJournal sj = new SleepJournal();
             JsonWriter writer = new JsonWriter(".data/noSuchFile.json");
             writer.open();
             fail("IOException was expected, but not thrown");

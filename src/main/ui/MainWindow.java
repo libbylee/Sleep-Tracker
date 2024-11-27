@@ -51,7 +51,7 @@ public class MainWindow {
     private void initializeMenu() {
         tabbedPane = new JTabbedPane();
 
-        mainMenu = new MainMenuPanel(this, journal, writer, reader);
+        mainMenu = new MainMenuPanel(this);
         viewEntriesPanel = new ViewEntriesPanel(this, journal, reader);
         addEntryPanel = new AddEntryPanel(this, journal, writer, viewEntriesPanel);
         averageStatsPanel = new AverageStatsPanel(this, journal);

@@ -100,11 +100,11 @@ public class SleepJournalTest {
 
 
     @Test
-    void testAverageHoursSleptWithEmptyJournal(){
+    void testAverageHoursSleptWithEmptyJournal() {
         assertEquals("0.0", sleepJournalTest.averageHoursSlept());
     }
 
-     @Test
+    @Test
     public void testSetEntries() {
         List<SleepEntry> sortedEntries = new ArrayList<>();
         sortedEntries.add(entry2); 
@@ -129,7 +129,7 @@ public class SleepJournalTest {
     }
 
     @Test
-    void testAverageRatingWithEmptyJournal(){
+    void testAverageRatingWithEmptyJournal() {
         assertEquals(0, sleepJournalTest.averageSleepRating());
     }
 

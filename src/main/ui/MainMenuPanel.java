@@ -1,24 +1,12 @@
 package ui;
 
 import javax.swing.*;
-import model.SleepJournal;
-import persistence.JsonReader;
-import persistence.JsonWriter;
 import java.awt.*;
 
 public class MainMenuPanel extends JPanel {
-    private MainWindow mainWindow;
-    private SleepJournal journal;
-    private JsonWriter writer;
-    private JsonReader reader;
-    private ViewEntriesPanel viewEntriesPanel;
 
-    public MainMenuPanel(MainWindow mainWindow, SleepJournal journal, JsonWriter writer, JsonReader reader) {
-        this.mainWindow = mainWindow;
-        this.journal = journal;
-        this.writer = writer;
-        this.reader = reader;
-        this.viewEntriesPanel = new ViewEntriesPanel(mainWindow, journal, reader);
+
+    public MainMenuPanel(MainWindow mainWindow) {
 
         setLayout(new BorderLayout());
 
